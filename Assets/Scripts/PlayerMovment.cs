@@ -63,7 +63,6 @@ public class PlayerMovment : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(verticalLook, 0, 0);
 
         Vector3 temp= ((transform.right * moveDirection.x + transform.forward * moveDirection.y)).normalized * speed;
-        temp *= Time.deltaTime;
         temp.y = rb.velocity.y;
         rb.velocity = temp;
 
