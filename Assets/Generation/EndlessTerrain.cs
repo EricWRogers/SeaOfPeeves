@@ -77,10 +77,14 @@ public class EndlessTerrain : MonoBehaviour
         Vector2 position;
         Bounds bounds;
         MapData mapData;
+
         MeshRenderer meshRenderer;
         MeshFilter meshFilter;
+        MeshCollider meshCollider;
+
         LODInfo[] detailLevels;
         LODMesh[] lodMeshes;
+
         bool mapDataReceived = false;
         int previousLODIndex = -1;
 
@@ -95,6 +99,7 @@ public class EndlessTerrain : MonoBehaviour
             meshObject = new GameObject("Terrain Chunk");
             meshRenderer = meshObject.AddComponent<MeshRenderer>();
             meshFilter = meshObject.AddComponent<MeshFilter>();
+            meshCollider = meshObject.AddComponent<MeshCollider>();
             meshRenderer.material = _material;
 
             meshObject.transform.position = positionV3 * scale;
@@ -149,6 +154,7 @@ public class EndlessTerrain : MonoBehaviour
                         {
                             previousLODIndex = lodIndex;
                             meshFilter.mesh = lodMesh.mesh;
+                            meshCollider.sharedMesh = lodMesh.mesh;
                         }
                         else if (!lodMesh.hasRequestedMesh)
                         {
@@ -165,7 +171,8 @@ public class EndlessTerrain : MonoBehaviour
 
         public void SetVisible(bool _visible)
         {
-            meshObject.SetActive(_visible);
+            if (meshObject)
+                meshObject.SetActive(_visible);
         }
 
         public bool IsVisible()
