@@ -19,7 +19,7 @@ public class BoatControls : MonoBehaviour
     private float baseDrag;
 
     private Rigidbody rb;
-    private Vector3 direction = Vector3.forward;
+    //private Vector3 direction = Vector3.forward;
     private float currentAcceleration = 0f;
     private bool anchored = false;
     private bool goingLeft = false;
@@ -43,7 +43,8 @@ public class BoatControls : MonoBehaviour
             {
                 straight();
             }
-        }        
+        }
+        speed.text = "Speed: " + (int)(rb.velocity.sqrMagnitude * 10);
     }
 
     private void FixedUpdate()
@@ -64,7 +65,7 @@ public class BoatControls : MonoBehaviour
         }
         else if (goingRight)
         {
-            Debug.Log("going right");
+            //Debug.Log("going right");
             //direction += new Vector3(0, turnRotation, 0).normalized * turnSpeed * Time.deltaTime;
             Boat.transform.Rotate(Vector3.up, turnRotation * turnSpeed * Time.deltaTime);
         }
@@ -77,13 +78,15 @@ public class BoatControls : MonoBehaviour
 
     public void accelerate()
     {
-        currentAcceleration += acceleration;
+        if(currentAcceleration < maxSpeed)
+            currentAcceleration += acceleration;
         Debug.Log("accelerate");
     }
 
     public void decelerate()
     {
-        currentAcceleration += decceleration;
+        if(currentAcceleration > -maxSpeed)
+            currentAcceleration += decceleration;
     }
 
     public void left()

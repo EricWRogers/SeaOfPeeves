@@ -7,6 +7,7 @@ public class PlayerMovment : MonoBehaviour
 {
     public float speed = 5.0f;
     public float maxSpeed = 15f;
+    public float interactRange = 5f;
     public float lookSensitivity = 1f;
     public float clampRange = 45f;
     public GameObject cam;
@@ -19,7 +20,7 @@ public class PlayerMovment : MonoBehaviour
     private PlayerInputActions playerControls;
     private InputAction move;
     private InputAction look;
-    private InputAction fire;
+    private bool hitSomething = false;
 
     private void Awake()
     {
@@ -30,17 +31,14 @@ public class PlayerMovment : MonoBehaviour
     {
         move = playerControls.Player.Move;
         look = playerControls.Player.Look;
-        fire = playerControls.Player.Fire;
 
         move.Enable();
         look.Enable();
-        fire.Enable();
     }
     private void OnDisable()
     {
         move.Disable();
         look.Disable();
-        fire.Disable();
     }
     // Start is called before the first frame update
     void Start()
@@ -53,6 +51,41 @@ public class PlayerMovment : MonoBehaviour
     {
         moveDirection = move.ReadValue<Vector2>();
         lookDirection = look.ReadValue<Vector2>();
+        RaycastHit hit;
+        if (Keyboard.current.eKey.isPressed)
+        {
+            Debug.Log("fired raycast");
+            hitSomething = Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, interactRange);
+            if (hitSomething)
+            {
+                Debug.Log("hit something");
+                string temp = hit.transform.gameObject.name;
+                if(temp == "Left")
+                {
+                    hit.transform.parent.GetComponent<BoatControls>().left();
+                }
+                else if(temp == "Right")
+                {
+                    hit.transform.parent.GetComponent<BoatControls>().right();
+                }
+                else if (temp == "Straight")
+                {
+                    hit.transform.parent.GetComponent<BoatControls>().straight();
+                }
+                else if (temp == "Forward")
+                {
+                    hit.transform.parent.GetComponent<BoatControls>().accelerate();
+                }
+                else if (temp == "Backwards")
+                {
+                    hit.transform.parent.GetComponent<BoatControls>().decelerate();
+                }
+                else if (temp == "Anchor")
+                {
+                    hit.transform.parent.GetComponent<BoatControls>().anchor();
+                }
+            }
+        }
     }
 
     private void FixedUpdate()
