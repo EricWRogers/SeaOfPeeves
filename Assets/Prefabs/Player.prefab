@@ -145,23 +145,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 5646879826467323412}
   - component: {fileID: 5854628800406478898}
   - component: {fileID: 5799412539099346239}
   - component: {fileID: 7343370533529613928}
   - component: {fileID: 7231463542316965886}
   - component: {fileID: 4581019035042350118}
-=======
-  - component: {fileID: 4502489766329792739}
-  - component: {fileID: 73144991517711528}
-  - component: {fileID: 3086553508895698313}
-  - component: {fileID: 4219109552857506925}
-  - component: {fileID: 5905819492566424283}
-  - component: {fileID: 1291416152394015353}
-  - component: {fileID: 1260875489037524404}
-  - component: {fileID: 5721446269091911988}
->>>>>>> c8ace38 (Setup of health for player)
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -301,95 +290,4 @@ MonoBehaviour:
   maxSpeed: 15
   lookSensitivity: 1
   clampRange: 45
-<<<<<<< HEAD
   cam: {fileID: 4317588821271663300}
-=======
-  cam: {fileID: 58779355819997248}
---- !u!114 &1260875489037524404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7833854408316884438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec758a846f9d364b9f2777b919e5d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 5721446269091911988}
---- !u!114 &5721446269091911988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7833854408316884438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604dfbbf654f92618bc36972daaa4968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1260875489037524404}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: OnHealthChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  healed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1260875489037524404}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: Healed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  hurt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1260875489037524404}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: Hurt
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  outOfHealth:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1260875489037524404}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: OutOfHealth
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  maxHealth: 100
-  currentHealth: 0
->>>>>>> c8ace38 (Setup of health for player)
