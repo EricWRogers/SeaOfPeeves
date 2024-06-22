@@ -44,7 +44,7 @@ public class BoatControls : MonoBehaviour
                 straight();
             }
         }
-        speed.text = "Speed: " + (int)(rb.velocity.sqrMagnitude * 10);
+        speed.text = "Speed: " + (int)(rb.velocity.magnitude*10);
     }
 
     private void FixedUpdate()
