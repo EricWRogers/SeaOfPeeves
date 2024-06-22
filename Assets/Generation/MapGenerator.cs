@@ -36,7 +36,7 @@ public class MapGenerator : MonoBehaviour
 
     void Awake()
     {
-        fallofMap = FalloffGenerator.GenerateFalloffMap(mapChuckSize);
+        fallofMap = FalloffGenerator.GenerateFalloffMap(mapChuckSize+2);
     }
 
     public void DrawMapInEditor()
@@ -60,7 +60,7 @@ public class MapGenerator : MonoBehaviour
         }
         else if (drawMode == DrawMode.FalloffMap)
         {
-            display.DrawTexture(TextureGenerator.TextureFromHeightMap(FalloffGenerator.GenerateFalloffMap(mapChuckSize)));
+            display.DrawTexture(TextureGenerator.TextureFromHeightMap(FalloffGenerator.GenerateFalloffMap(mapChuckSize+2)));
         }
     }
 
@@ -125,10 +125,10 @@ public class MapGenerator : MonoBehaviour
     {
         float [,] noiseMap = Noise.GenerateNoiseMap(mapChuckSize + 2, mapChuckSize + 2, seed, scale, octaves, persistance, lacunarity, _center + offset, normalizeMode);
 
-        Color[] colorMap = new Color[mapChuckSize * mapChuckSize];
-        for (int y = 0; y < mapChuckSize; y++)
+        Color[] colorMap = new Color[(mapChuckSize + 2) * (mapChuckSize + 2)];
+        for (int y = 0; y < mapChuckSize + 2; y++)
         {
-            for (int x = 0; x < mapChuckSize; x++)
+            for (int x = 0; x < mapChuckSize + 2; x++)
             {
                 if (useFalloff)
                 {
@@ -139,7 +139,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if (currentmapChuckSize >= regions[i].height)
                     {
-                        colorMap[y * mapChuckSize + x] = regions[i].color;
+                        colorMap[y * mapChuckSize + x + 2] = regions[i].color;
                     } else {
                         break;
                     }
@@ -156,7 +156,7 @@ public class MapGenerator : MonoBehaviour
         octaves = Mathf.Max(0, octaves);
 
         if (useFalloff)
-            fallofMap = FalloffGenerator.GenerateFalloffMap(mapChuckSize);
+            fallofMap = FalloffGenerator.GenerateFalloffMap(mapChuckSize+2);
     }
 
     struct MapThreadInfo<T> {
