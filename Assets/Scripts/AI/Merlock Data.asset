@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4beb0fd4cdf4615bf1d4677d4ac9aff, type: 3}
+  m_Name: Merlock Data
+  m_EditorClassIdentifier: 
+  AgentHealth: 100
+  movementSpeed: 1.4
+  attackDistance: 4
+  dangerDistance: 5
+  trackSpeed: 0.1
+  attackRate: 10
+  attackRateFluctuation: 0
+  subAttackRate: 10
+  subAttackRateFluctuation: 0
+  seperation: 2
+  strafeRate: 0
+  AgentBaseDamage: 0
+  AgentBaseDefense: 0
+  AgentEvadeChance: 0
+  AgentCounterChance: 0
+  AgentSkillChance: 0
+  AgentLungeChance: 0
+  CanDodge: 0
+  AvoidOthers: 1
+  canLockOn: 0

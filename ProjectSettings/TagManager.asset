@@ -9,6 +9,7 @@ TagManager:
   - ScreenCamera
   - cockpit_capitalLaser
   - Water
+  - Agent
   layers:
   - Default
   - TransparentFX
