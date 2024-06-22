@@ -1025,6 +1025,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1375013586}
     - target: {fileID: 4581019035042350118, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
+      propertyPath: jumpForce
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581019035042350118, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: interactRange
       value: 5
       objectReference: {fileID: 0}
@@ -1038,7 +1042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.67
+      value: 3.57
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalRotation.w
