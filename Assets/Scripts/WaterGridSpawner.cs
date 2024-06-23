@@ -12,12 +12,15 @@ public class WaterGridSpawner : MonoBehaviour
 
     void Start()
     {
+        float offset = (gridSize - 1) / 2.0f * gridSize;
+
         for (int x = 0; x < gridSize; x++)
         {
             for (int z = 0; z < gridSize; z++)
             {
-                Vector3 spawnPosition = new Vector3(x * 100, 0, z * 100);
-                Instantiate(waterSurfacePrefab, spawnPosition, Quaternion.identity);
+                Vector3 spawnPosition = new Vector3(x * 100 - offset, yLevel, z * 100 - offset);
+                GameObject gobj = Instantiate(waterSurfacePrefab, spawnPosition, Quaternion.identity);
+                gobj.transform.parent = transform;
             }
         }
     }

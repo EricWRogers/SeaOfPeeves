@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterSurfacePrefab: {fileID: 4507554638825087717, guid: 56a42f3b1dd44944aa6b3aa1cb736179, type: 3}
-  gridSize: 500
+  gridSize: 100
   yLevel: 18
 --- !u!1 &322488133
 GameObject:
