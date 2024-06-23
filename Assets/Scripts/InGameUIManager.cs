@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InGameUIManager : SingletonMonoBehaviour<InGameUIManager>
 {
@@ -16,6 +17,8 @@ public class InGameUIManager : SingletonMonoBehaviour<InGameUIManager>
 
     public TextMeshProUGUI scoreUI;
     public GameObject winScreen;
+
+    public Slider volumeSlider;
 
     new void Awake()
     {
@@ -47,6 +50,8 @@ public class InGameUIManager : SingletonMonoBehaviour<InGameUIManager>
         pausePanel.SetActive(paused);
 
         Time.timeScale = paused ? 0 : 1;
+        Cursor.visible = paused;
+        Cursor.lockState = paused ? CursorLockMode.None : CursorLockMode.Confined;
     }
 
     public void Quit()

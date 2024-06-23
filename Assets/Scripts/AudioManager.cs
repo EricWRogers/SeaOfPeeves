@@ -15,6 +15,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     public AudioSource waterAmbience;
 
 
+
     public bool underWater;
 
     private void Start()
@@ -29,10 +30,12 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         mainAmbience.volume = underWater ? 0 : 1;
     }
 
-    public void SetVolume(float _sliderValue)
+    public void SetVolume()
     {
+        float _sliderValue = InGameUIManager.Instance.volumeSlider.value;
         float dB = Mathf.Lerp(-80f, 0f, _sliderValue);
         mixer.SetFloat("MainVolume", dB);
+        Debug.Log($"SLIDER {_sliderValue} VOLUME {dB}");
     }
 
     public void PlaySting(string _tag)
