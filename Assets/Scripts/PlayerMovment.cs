@@ -7,10 +7,12 @@ public class PlayerMovment : MonoBehaviour
 {
     public float speed = 5.0f;
     public float maxSpeed = 15f;
+    public float jumpForce = 200f;
     public float interactRange = 5f;
     public float lookSensitivity = 1f;
     public float clampRange = 45f;
     public GameObject cam;
+    public GameObject jumpPoint;
 
     private Vector2 moveDirection = Vector2.zero;
     private Vector2 lookDirection = Vector2.zero;
@@ -20,6 +22,7 @@ public class PlayerMovment : MonoBehaviour
     private PlayerInputActions playerControls;
     private InputAction move;
     private InputAction look;
+    private InputAction jump;
     private bool hitSomething = false;
 
     private void Awake()
@@ -31,19 +34,22 @@ public class PlayerMovment : MonoBehaviour
     {
         move = playerControls.Player.Move;
         look = playerControls.Player.Look;
+        jump = playerControls.Player.Jump;
 
         move.Enable();
         look.Enable();
+        jump.Enable();
     }
     private void OnDisable()
     {
         move.Disable();
         look.Disable();
+        jump.Disable();
     }
     // Start is called before the first frame update
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -85,6 +91,16 @@ public class PlayerMovment : MonoBehaviour
                     hit.transform.parent.GetComponent<BoatControls>().anchor();
                 }
             }
+        }
+
+        if (playerControls.Player.Jump.triggered)
+        {
+            //Debug.Log("Jump");
+            //hitSomething = Physics.Raycast(Vector3.down, transform.position, out _, interactRange);
+            //if(hitSomething)
+            //{ 
+                rb.AddForce(Vector3.up * jumpForce);
+            //}
         }
     }
 
