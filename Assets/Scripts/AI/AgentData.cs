@@ -2,10 +2,16 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
+   public enum MerlockType
+    {
+        UnderWater,
+        Ship
+    }
     [CreateAssetMenu(fileName = "AgentData", menuName = "Agent Data")]
     public class AgentData : ScriptableObject
     {
         [Header(" Agent Combat Settings")]
+        public MerlockType merlockType = MerlockType.UnderWater;
         public float AgentHealth = 1.0f;
         public float movementSpeed = 1.0f;
         public float attackDistance = 1.0f;

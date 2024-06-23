@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using UnityEditor;
 using UnityEngine;
 
 public class AgentCombatManager 
@@ -29,7 +30,7 @@ public class AgentCombatManager
 
 
     private float thinkPeriod = 1.5f;
-    private float reactPeriod = 0.4f;
+    private float reactPeriod = 0.5f;
     public GameObject targetObject;
 
     private Vector3 distVec;
@@ -44,6 +45,8 @@ public class AgentCombatManager
     private float strafeRate = 3.0f;
     private float rangeTimeOut = 0f;
     private float avoiderTimeOut = 0f;
+    private float timeSinceLastAvoid = 0f;
+    private float avoidanceDamper = .8f;
 
     private Avoider avoider;
     public MonsterAgent ThisAgent { get; set; }
@@ -155,16 +158,7 @@ public class AgentCombatManager
 		}
 
 
-		//Avoider time out
-		if (avoidVec != Vector3.zero && avoiderTimeOut <= 0 && sqrDistance <= sqrDangerDistance)
-		{
-			avoiderTimeOut += Time.fixedDeltaTime;
-		}
-
-		if (avoidVec == Vector3.zero && avoiderTimeOut > 0)
-		{
-			avoiderTimeOut -= Time.fixedDeltaTime;
-		}
+		
 
 
 		//Throwing spears 
@@ -200,7 +194,6 @@ public class AgentCombatManager
 		//Place holder 
 		if (ThisAgent.combatStates.attacking)
 		{
-			Debug.Log($"Place holder time since animation start:  {Time.fixedTime - placeHolderAnimationStart}");
 			if (Time.fixedTime - placeHolderAnimationStart > .5)
 			{
 				if (ThisAgent.damageCollider != null)
@@ -235,6 +228,16 @@ public class AgentCombatManager
 			
 		}
 
+		if ((Time.fixedTime - lastThought) < thinkPeriod 
+		    && ThisAgent.combatStates.avoiding && avoider.avoidEnemy == null)
+		{
+			if(targetObject!= null)
+				ThisAgent.TrackTarget(targetObject);
+			
+			ThisAgent.ResetAnimations();
+		}
+		
+
 		if (targetObject == null)
 		{
 			return;
@@ -248,7 +251,7 @@ public class AgentCombatManager
 		UpdateDistance();
 		
 		bool shouldAvoid = ( avoidVec != Vector3.zero && sqrDistance <= sqrDangerDistance &&
-				ThisAgent.AgentData.AvoidOthers ||  avoiderTimeOut > 0f);
+				ThisAgent.AgentData.AvoidOthers );
 		bool shouldStrafe =
 			((!ThisAgent.combatStates.staggered && !shouldAvoid && !engagePrey &&
 			  sqrDistance <= sqrAttackDistance ||
@@ -288,14 +291,11 @@ public class AgentCombatManager
 
 		else
 		{
-			if (!ThisAgent.combatStates.strafing && !ThisAgent.combatStates.avoiding)
+			if (sqrDistance > sqrAttackDistance && (Time.fixedTime - timeSinceLastAvoid) > avoidanceDamper)
 			{
-
-				if (sqrDistance > sqrAttackDistance)
-				{
-					Seek(targetObject.transform.position);
-				}
+				Seek(targetObject.transform.position);
 			}
+			
 		}
 		
 	}
@@ -329,15 +329,7 @@ public class AgentCombatManager
 				ThisAgent.TrackTarget(targetObject);
 				
 			}
-			else
-			{
 			
-				//if (ThisAgent.combatStates.strafing || ThisAgent.combatStates.avoiding )
-				//{
-					ThisAgent.TrackTarget(targetObject);
-					
-				//}
-			}
 		}
 		
 		//check to see if withing my fov
@@ -357,11 +349,11 @@ public class AgentCombatManager
 			Vector3 avoidancePosition = Vector3.zero;
 
 			// Check if the enemy is in front
-			if (Vector3.Dot(forward, toOther) > 0.7f)
+			if (Vector3.Dot(forward, toOther) > 0.98f)
 			{
 				// Enemy is in front, strafe left or right
 				Vector3 localPos = ThisAgent.transform.InverseTransformPoint(avoider.avoidEnemy.transform.position);
-				bool right = localPos.x >= 0.0f;
+				bool right = localPos.x > 0.0f;
 
 				if (right)
 				{
@@ -378,21 +370,21 @@ public class AgentCombatManager
 			{
 				// Enemy is not in front, avoid normally
 				Vector3 localPos = ThisAgent.transform.InverseTransformPoint(avoider.avoidEnemy.transform.position);
-				bool right = localPos.x < 0.0f;
-
+				bool right = localPos.x > 0.0f;
+				
 				if (!right)
 				{
 					avoidancePosition = ThisAgent.transform.position + -avoidVec * ThisAgent.AgentData.seperation;
-					Debug.DrawLine(ThisAgent.transform.position,avoidancePosition,Color.yellow );
+					Debug.DrawLine(ThisAgent.transform.position, avoidancePosition, Color.yellow);
 
 				}
 				else
 				{
 					avoidancePosition = ThisAgent.transform.position + -avoidVec * ThisAgent.AgentData.seperation;
-					Debug.DrawLine(ThisAgent.transform.position,avoidancePosition,Color.blue );
+					Debug.DrawLine(ThisAgent.transform.position, avoidancePosition, Color.blue);
 				}
 			}
-
+			timeSinceLastAvoid = Time.fixedTime;
 			Seek(avoidancePosition, ThisAgent.AgentData.canLockOn);
 		}
 	}
@@ -439,17 +431,25 @@ public class AgentCombatManager
 			bool success = false;
 
 			success = ThisAgent.OnAttack();
-
+			
 			if (success)
 			{
 				ThisAgent.combatStates.attacking = true;
-				
+
+				if (ThisAgent.AgentData.merlockType == MerlockType.Ship)
+				{
+					ThisAgent.navMeshAgent.destination = ThisAgent.transform.position;
+				}
 				Debug.Log("On Success Attack");
 				if (ThisAgent.attackIndicator != null)
 				{
 					ThisAgent.attackIndicator.SetActive(true);
 				}
 				
+				
+				ThisAgent.monsterAnimator.SetTrigger("Attack");
+				ThisAgent.monsterAnimator.SetFloat("MoveY", 0);
+				ThisAgent.monsterAnimator.SetFloat("MoveX", 0);
 				placeHolderAnimationStart = Time.fixedTime;
 				lastAttackTime = Time.fixedTime;
 				actualAttackRate = attackRate + (Random.value - 0.5f) * attackRateFluctuation;
@@ -529,16 +529,22 @@ public class AgentCombatManager
 		{
 			strafeCooldown = strafeRate;
 		}
+		
+		
 	}
 
 	//lets the agent request an attack if the period to react has elasped 
 	void React()
 	{
+		ThisAgent.TrackTarget(targetObject);
+		
 		lastReact = Time.fixedTime;
 		
 		UpdateMeleeCombat();
 		
 		sqrDistance = Vector3.SqrMagnitude(targetObject.transform.position - ThisAgent.transform.position);
+
+		
 
 		//Main Weapon on Request Attack
 		if (sqrDistance != 0 && sqrDistance <= sqrAttackDistance)
@@ -597,6 +603,8 @@ public class AgentCombatManager
 		}
 		
 	}
+
+	
 
 	void OnStun(float d)
 	{

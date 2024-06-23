@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
@@ -37,11 +39,14 @@ namespace DefaultNamespace
             this.unbalanced = false;
         }
     }
+
     public abstract class MonsterAgent : MonoBehaviour
     {
         public AgentData AgentData;
+
         public AgentCombatState combatStates;
-      //  private List<GameObject> attackers; //all agents about to attack
+
+        //  private List<GameObject> attackers; //all agents about to attack
         private float attackCooldown = 0.0f;
         public GameObject playerGameObject;
         public float agentHealth;
@@ -50,15 +55,20 @@ namespace DefaultNamespace
         private PlayerAICombatState playerAICombatState;
         public GameObject attackIndicator;
         public GameObject damageCollider;
-
+        public Animator monsterAnimator;
         private float randomizedSpeed;
+        public NavMeshAgent navMeshAgent;
         private void Start()
         {
             playerAICombatState = playerGameObject.GetComponent<PlayerAICombatState>();
             agentCombatManager = new AgentCombatManager(this);
             agentHealth = AgentData.AgentHealth;
-
             randomizedSpeed = AgentData.movementSpeed + Random.Range(-.2f, .5f);
+
+            if (AgentData.merlockType == MerlockType.Ship)
+            {
+                navMeshAgent = GetComponent<NavMeshAgent>();
+            }
         }
 
         private void Update()
@@ -66,27 +76,27 @@ namespace DefaultNamespace
             agentCombatManager.UpdateAgentCombat();
         }
 
-     
-        
+
+
         public bool OnAttack()
         {
             // Just to see if the monster is in a disabled state or not
-            if ( combatStates.stunned || combatStates.staggered || attackCooldown > 0.0f)
+            if (combatStates.stunned || combatStates.staggered || attackCooldown > 0.0f)
                 return false;
-            
+
             return true;
         }
-        
+
         public void OnRequestAttack(GameObject requestor)
         {
-           // playerAICombatState.attackers.RemoveAll(item => item == null);
+            // playerAICombatState.attackers.RemoveAll(item => item == null);
 
-            if ( playerAICombatState.attackers.Count < playerAICombatState.simultaneousAttackers)
+            if (playerAICombatState.attackers.Count < playerAICombatState.simultaneousAttackers)
             {
-                if (! playerAICombatState.attackers.Contains(requestor))
+                if (!playerAICombatState.attackers.Contains(requestor))
                     playerAICombatState.attackers.Add(requestor);
                 //Debug.Log("Requestor " + requestor);
-                
+
                 agentCombatManager.OnAllowAttack(requestor);
                 // Debug.Log("Attack accepted, current attackers: " + attackers.Count);
             }
@@ -95,38 +105,89 @@ namespace DefaultNamespace
                 // Debug.Log("Attack REJECTED, current attackers: " + attackers.Count);
             }
         }
-        
+
         public void OnCancelAttack(GameObject requestor)
         {
             if (attackIndicator != null)
             {
-               attackIndicator.SetActive(false);
+                attackIndicator.SetActive(false);
             }
+
             if (damageCollider != null)
             {
                 damageCollider.SetActive(false);
             }
+
             // Debug.Log("Requestor " + requestor);
             playerAICombatState.attackers.Remove(requestor);
         }
-   
+
         public void TrackTarget(GameObject target)
         {
             Vector3 targetPoint = target.transform.position;
-            targetPoint.y = transform.position.y; 
+            targetPoint.y = transform.position.y;
 
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, AgentData.trackSpeed * Time.deltaTime);
+            transform.rotation =
+                Quaternion.Slerp(transform.rotation, targetRotation, AgentData.trackSpeed * Time.deltaTime);
         }
-        public void MoveToTarget( Vector3 targetPosition )
-        {
-            Vector3 direction = (targetPosition - transform.position).normalized;
-            Vector3 moveVector = direction * (randomizedSpeed * Time.deltaTime);
-        
-            // Ensure only horizontal movement by maintaining the current y position
-            moveVector.y = 0;
 
-            transform.position += moveVector;
+        public void MoveToTarget(Vector3 targetPosition)
+        {
+            StopCoroutine();
+            Vector3 direction = (targetPosition - transform.position).normalized;
+            TrackTarget(playerGameObject);
+
+            if (AgentData.merlockType == MerlockType.UnderWater)
+            {
+                Vector3 moveVector = direction * (randomizedSpeed * Time.deltaTime);
+
+                // Ensure only horizontal movement by maintaining the current y position
+                moveVector.y = 0;
+
+                transform.position += moveVector;
+            }
+            else
+            {
+                navMeshAgent.destination = targetPosition;
+                navMeshAgent.speed = AgentData.movementSpeed;
+            }
+            Vector3 localDirection = transform.InverseTransformDirection(direction);
+            monsterAnimator.SetFloat("MoveY", localDirection.z);
+            monsterAnimator.SetFloat("MoveX", localDirection.x);
+        }
+
+        public void ResetAnimations()
+        {
+            StartCoroutine(SmoothToIdle());
+        }
+
+        public void StopCoroutine()
+        {
+            StopCoroutine(SmoothToIdle());
+        }
+
+        private IEnumerator SmoothToIdle()
+        {
+            float y = monsterAnimator.GetFloat("MoveY");
+            float x = monsterAnimator.GetFloat("MoveX");
+            float smoothTime = 1.0f; // Time to smooth back to idle
+
+            while (Mathf.Abs(y) > 0.01f || Mathf.Abs(x) > 0.01f)
+            {
+                // Smoothly damp the values towards zero
+                y = Mathf.MoveTowards(y, 0, Time.deltaTime / smoothTime);
+                x = Mathf.MoveTowards(x, 0, Time.deltaTime / smoothTime);
+
+                monsterAnimator.SetFloat("MoveY", y);
+                monsterAnimator.SetFloat("MoveX", x);
+
+                yield return null; // Wait for the next frame
+            }
+
+            // Ensure final values are set to zero
+            monsterAnimator.SetFloat("MoveY", 0);
+            monsterAnimator.SetFloat("MoveX", 0);
         }
     }
 }
