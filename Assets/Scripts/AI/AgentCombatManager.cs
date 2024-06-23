@@ -194,7 +194,7 @@ public class AgentCombatManager
 		//Place holder 
 		if (ThisAgent.combatStates.attacking)
 		{
-			if (Time.fixedTime - placeHolderAnimationStart > .5)
+			if (Time.fixedTime - placeHolderAnimationStart > .5f)
 			{
 				if (ThisAgent.damageCollider != null)
 				{
@@ -202,7 +202,7 @@ public class AgentCombatManager
 				}
 			}
 			
-			if (Time.fixedTime - placeHolderAnimationStart > 1.5)
+			if (Time.fixedTime - placeHolderAnimationStart > .5f)
 			{
 				ThisAgent.combatStates.attacking = false;
 			}
@@ -440,17 +440,17 @@ public class AgentCombatManager
 				{
 					ThisAgent.navMeshAgent.destination = ThisAgent.transform.position;
 				}
-				Debug.Log("On Success Attack");
+				
 				if (ThisAgent.attackIndicator != null)
 				{
 					ThisAgent.attackIndicator.SetActive(true);
 				}
 				
-				
 				ThisAgent.monsterAnimator.SetTrigger("Attack");
 				ThisAgent.monsterAnimator.SetFloat("MoveY", 0);
 				ThisAgent.monsterAnimator.SetFloat("MoveX", 0);
 				placeHolderAnimationStart = Time.fixedTime;
+				
 				lastAttackTime = Time.fixedTime;
 				actualAttackRate = attackRate + (Random.value - 0.5f) * attackRateFluctuation;
 			    //Debug.Log("Attack Flux" + actualAttackRate);
