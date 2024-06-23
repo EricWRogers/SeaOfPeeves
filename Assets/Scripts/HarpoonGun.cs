@@ -15,6 +15,9 @@ public class HarpoonGun : MonoBehaviour
     public bool fired;
     public int numPoints = 20;
 
+    public AudioSource fireSound;
+    public AudioSource chainLoop;
+
     public LineRenderer lineRenderer;
     // Start is called before the first frame update
     private void Awake()
@@ -47,9 +50,16 @@ public class HarpoonGun : MonoBehaviour
             shot = GameObject.Instantiate(harpoon, firePoint.position, transform.rotation);
             shot.GetComponent<Harpoon>().returnPoint = firePoint;
             shot.GetComponent<Harpoon>().ret = false;
+            fireSound.Play();
+            chainLoop.volume = 1.0f;
         }
         else if(fired && playerControls.Player.Fire.triggered) {
             shot.GetComponent<Harpoon>().ret = true;
+            
+        }
+        if(!fired)
+        {
+            chainLoop.volume = 0;
         }
 
         if(shot != null)

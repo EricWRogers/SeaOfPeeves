@@ -12,6 +12,7 @@ public class UnderwaterEffect : MonoBehaviour
     private Color normalColor;
     public float height = 18f;
     private bool isUnderwater = false;
+    private bool previousUnderwater = false;
     private void Start()
     {
         normalColor = RenderSettings.fogColor;
@@ -26,6 +27,12 @@ public class UnderwaterEffect : MonoBehaviour
             RenderSettings.fogEndDistance = 50f;
 
             volume.profile = volumeProfile;
+            if(AudioManager.Instance != null)
+            {
+                AudioManager.Instance.underWater = true;
+            }
+
+            isUnderwater = true;
         }
         else
         {
@@ -34,6 +41,25 @@ public class UnderwaterEffect : MonoBehaviour
             RenderSettings.fogEndDistance = 300f;
 
             volume.profile = null;
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.underWater = false;
+            }
+
+            isUnderwater = false;
         }
+
+        LazyDetectWaterChange();
+    }
+
+    private void LazyDetectWaterChange()
+    {
+        if(previousUnderwater != isUnderwater)
+        {
+            //Aye yo, something changed here man
+            AudioManager.Instance.PlaySting(isUnderwater ? "enterWater" : "leaveWater");
+        }
+
+        previousUnderwater = isUnderwater;
     }
 }
