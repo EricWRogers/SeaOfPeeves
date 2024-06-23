@@ -26,6 +26,10 @@ public class UnderwaterEffect : MonoBehaviour
             RenderSettings.fogEndDistance = 50f;
 
             volume.profile = volumeProfile;
+            if(AudioManager.Instance != null)
+            {
+                AudioManager.Instance.underWater = true;
+            }
         }
         else
         {
@@ -34,6 +38,10 @@ public class UnderwaterEffect : MonoBehaviour
             RenderSettings.fogEndDistance = 300f;
 
             volume.profile = null;
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.underWater = false;
+            }
         }
     }
 }

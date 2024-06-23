@@ -10,11 +10,23 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     public List<AudioSting> audioStings = new List<AudioSting>();
 
-    private AudioSource stingSource;
+    public AudioSource stingSource;
+    public AudioSource mainAmbience;
+    public AudioSource waterAmbience;
+
+
+    public bool underWater;
 
     private void Start()
     {
-        stingSource = GetComponent<AudioSource>();
+        waterAmbience.volume = 0;
+        mainAmbience.volume = 0;
+    }
+
+    private void Update()
+    {
+        waterAmbience.volume = underWater ? 1 : 0;
+        mainAmbience.volume = underWater ? 0 : 1;
     }
 
     public void SetVolume(float _sliderValue)
@@ -29,7 +41,9 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         {
             if (audioStings[i].tag == _tag)
             {
-
+                stingSource.clip = audioStings[i].clip;
+                stingSource.volume = audioStings[i].volume;
+                stingSource.Play();
             }
         }
     }

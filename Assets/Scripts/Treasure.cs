@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Treasure : MonoBehaviour
 {
+    public string collectSoundTag = "collect";
     public GameObject seagulPrefab;
     public float seagulHeight = 50f;
     public GameObject interactPrompt;
@@ -23,6 +24,10 @@ public class Treasure : MonoBehaviour
 
         interact.performed -= Collect;
         GameManager.Instance.IncrementScore(1);
+        if(AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySting(collectSoundTag);
+        }
         Destroy(this.gameObject);
     }
 
