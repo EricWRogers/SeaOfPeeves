@@ -116,6 +116,7 @@ public class BoatControls : MonoBehaviour
     public void straight()
     {
         straightenTimer = 0f;
+        rb.angularVelocity = Vector3.zero;
         goingLeft = false;
         goingRight = false;
     }
