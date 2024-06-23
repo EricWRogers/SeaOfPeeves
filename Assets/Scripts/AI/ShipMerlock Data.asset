@@ -15,15 +15,15 @@ MonoBehaviour:
   merlockType: 1
   AgentHealth: 100
   damage: 20
-  movementSpeed: 1
+  movementSpeed: 1.5
   attackDistance: 2.5
-  dangerDistance: 8
+  dangerDistance: 5
   trackSpeed: 5
   attackRate: 5
   attackRateFluctuation: 0
   subAttackRate: 10
   subAttackRateFluctuation: 0
-  seperation: 2
+  seperation: 1.5
   strafeRate: 0
   AgentBaseDamage: 0
   AgentBaseDefense: 0

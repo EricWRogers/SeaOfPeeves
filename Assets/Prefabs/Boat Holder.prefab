@@ -1910,6 +1910,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 610115124404952496}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
+      propertyPath: spawnAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: spawnRadius
       value: 2
       objectReference: {fileID: 0}
@@ -1923,11 +1927,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: RandomShipSpawnMax
-      value: 20
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: RandomShipSpawnMin
-      value: 15
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3435748231923159809, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: m_Name
@@ -2227,11 +2231,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: RandomShipSpawnMax
-      value: 20
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: RandomShipSpawnMin
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3435748231923159809, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: m_Name
@@ -2467,11 +2471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: RandomShipSpawnMax
-      value: 30
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: RandomShipSpawnMin
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3435748231923159809, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: m_Name
@@ -2632,16 +2636,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 610115124404952496}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
+      propertyPath: spawnAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: maxSpawnAmount
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: RandomShipSpawnMax
-      value: 30
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 959216407334264404, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: RandomShipSpawnMin
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3435748231923159809, guid: 57e267f7c0301ab4391a50ced7a17861, type: 3}
       propertyPath: m_Name

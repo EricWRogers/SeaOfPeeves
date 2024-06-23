@@ -274,6 +274,7 @@ MonoBehaviour:
     avoiding: 0
     isGettingHit: 0
     IsAttacking: 0
+    isClimbing: 0
   swishAudio: {fileID: 0}
   playerGameObject: {fileID: 7904859016607482259, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
   agentHealth: 0
@@ -404,7 +405,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
 --- !u!114 &6985899080496655440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1711532839878602578
 Transform:
   m_ObjectHideFlags: 0
@@ -579,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   packTag: Player
-  monsterAgent: {fileID: 0}
+  monsterAgent: {fileID: 7742443125538834035}
 --- !u!65 &4757471102688117212
 BoxCollider:
   m_ObjectHideFlags: 0
