@@ -76,6 +76,7 @@ namespace DefaultNamespace
             {
                 navMeshAgent = GetComponent<NavMeshAgent>();
             }
+            
         }
 
         private void Update()
