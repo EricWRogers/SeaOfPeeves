@@ -76,9 +76,6 @@ namespace DefaultNamespace
             {
                 navMeshAgent = GetComponent<NavMeshAgent>();
             }
-            
-            GetComponent<Health>().maxHealth = (int)AgentData.AgentHealth;
-            GetComponent<Health>().currentHealth = (int)AgentData.AgentHealth;
         }
 
         private void Update()
