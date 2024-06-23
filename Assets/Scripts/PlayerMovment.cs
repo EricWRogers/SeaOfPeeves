@@ -96,7 +96,7 @@ public class PlayerMovment : MonoBehaviour
         if (playerControls.Player.Jump.triggered)
         {
             Debug.Log("Jump");
-            hitSomething = Physics.Raycast(transform.position, Vector3.down, out _, 1f);
+            hitSomething = Physics.Raycast(transform.position, Vector3.down, out _, 1.5f);
             Debug.Log(hitSomething);
             if(hitSomething)
             { 

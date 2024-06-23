@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6baa94ab89b89bb43880028a74190e5f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 266305a02dc596e40b8c6bd6dc89e90a, type: 2}
     - target: {fileID: 919132149155446097, guid: 6baa94ab89b89bb43880028a74190e5f, type: 3}
       propertyPath: m_Name
       value: Bottle
@@ -95,7 +99,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 44c5c9d60a3832441b9a76f5e43db655, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.003171
+      value: 0.00327
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 44c5c9d60a3832441b9a76f5e43db655, type: 3}
       propertyPath: m_LocalRotation.w
@@ -125,6 +129,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 44c5c9d60a3832441b9a76f5e43db655, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7edbd630cde900e4a9dec8be4ca6e517, type: 2}
     - target: {fileID: 919132149155446097, guid: 44c5c9d60a3832441b9a76f5e43db655, type: 3}
       propertyPath: m_Name
       value: Cork
