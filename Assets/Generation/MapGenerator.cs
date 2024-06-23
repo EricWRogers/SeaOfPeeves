@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(MapDisplay))]
 public class MapGenerator : MonoBehaviour
 {
+    public static MapGenerator Instance;
     public enum DrawMode {NoiseMap, ColorMap, Mesh, FalloffMap};
     public DrawMode drawMode;
     public Noise.NormalizeMode normalizeMode;
@@ -36,6 +38,9 @@ public class MapGenerator : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+            
         fallofMap = FalloffGenerator.GenerateFalloffMap(mapChuckSize+2);
     }
 
@@ -176,6 +181,8 @@ public struct TerrainType {
     [Range(0,1)]
     public float height;
     public Color color;
+
+    public List<GameObject> prefabs;
 }
 
 public struct MapData
