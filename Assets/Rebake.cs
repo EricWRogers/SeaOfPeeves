@@ -18,11 +18,17 @@ public class Rebake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (reBaked)
+        if (!reBaked)
         {
-            boatMesh.BuildNavMesh();
             reBaked = true;
+            StartCoroutine(RebakeCoroutine());
         }
         
+    }
+
+    IEnumerator RebakeCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        boatMesh.BuildNavMesh();
     }
 }

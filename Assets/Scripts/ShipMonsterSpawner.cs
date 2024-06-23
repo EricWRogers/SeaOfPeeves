@@ -1,5 +1,4 @@
 
-    using System;
     using System.Collections;
     using System.Collections.Generic;
     using DefaultNamespace;
@@ -15,11 +14,14 @@
 
         public float spawnAmount;
         private string playerTag = "Player";
+        public float RandomShipSpawnMin;
+        public float RandomShipSpawnMax;
+        public float RandomShipSpawn;
+        public float lastSpawnTime = 0;
         public float spawnInterval = 2f;
         public float spawnRadius = 3f;
 
         public GameObject playerGameObject;
-        public Transform SpawnEndPoint;
         private bool spawning;
         public SplineContainer spawnSpline;
         // Start is called before the first frame update
@@ -28,40 +30,46 @@
             
             spawnedMonsters = new List<GameObject>();
             playerGameObject = GameObject.FindGameObjectWithTag(playerTag);
+            RandomShipSpawn = Random.Range(RandomShipSpawnMin, RandomShipSpawnMax);
+            
         }
 
         private void Update()
         {
-            if (!spawning)
+            if ((Time.fixedTime - lastSpawnTime) > RandomShipSpawn)
             {
-                StartCoroutine(SpawnMonsters());
-
+                if (!spawning)
+                {
+                    spawning = true;
+                    StartCoroutine(SpawnMonsters());
+                }
             }
+            
         }
 
         private IEnumerator SpawnMonsters()
         {
-            spawning = true;
-            while (spawnedMonsters.Count < spawnAmount)
+            int counter = 0;
+            while (counter < spawnAmount)
             {
                 GameObject monster = Instantiate(monsterPrefab, transform.position, quaternion.identity);
                 monster.GetComponent<MonsterAgent>().playerGameObject = playerGameObject;
                 monster.GetComponent<MonsterAgent>().playerAICombatState = playerGameObject.GetComponent<PlayerAICombatState>();
                 monster.GetComponent<MonsterAgent>().splineAnimation.Container = spawnSpline;
                 monster.GetComponent<MonsterAgent>().splineAnimation.Play(); 
+                monster.GetComponent<MonsterAgent>().monsterAnimator.SetTrigger("Climb");
+                monster.GetComponent<MonsterAgent>().monsterAnimator.SetBool("Climbing", true);
+                monster.GetComponent<MonsterAgent>().combatStates.isClimbing = true;
                 monster.transform.LookAt(playerGameObject.transform);
                 spawnedMonsters.Add(monster);
+                counter++;
                 yield return new WaitForSeconds(spawnInterval);
             }
-        }
 
-       
-
-        private Vector3 GetRandomPositionOnShip()
-        {
-            Vector3 randomDirection = Random.insideUnitSphere * spawnRadius;
-            randomDirection.y = 0; // Ensure the position is on the same horizontal plane
-            return SpawnEndPoint.position + randomDirection;
+            lastSpawnTime = Time.fixedTime;
+            spawning = false;
+            RandomShipSpawn = Random.Range(RandomShipSpawnMin, RandomShipSpawnMax);
+            
         }
         
     }

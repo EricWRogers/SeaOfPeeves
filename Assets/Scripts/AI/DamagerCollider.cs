@@ -27,7 +27,7 @@ public class DamagerCollider : MonoBehaviour
             {
                 _isColliding = true;
                Debug.Log("HIT PLAYER");
-              collider.GetComponent<Health>().currentHealth -= monsterAgent.AgentData.damage;
+              collider.GetComponent<Health>().Damage(monsterAgent.AgentData.damage);
             }
         }
         

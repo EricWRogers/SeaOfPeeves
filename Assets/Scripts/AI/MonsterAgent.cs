@@ -26,6 +26,7 @@ namespace DefaultNamespace
         public bool avoiding = false;
         public bool isGettingHit = false;
         public bool IsAttacking = false;
+        public bool isClimbing = false;
 
         public void Reset()
         {
@@ -39,6 +40,7 @@ namespace DefaultNamespace
             this.staggered = false;
             this.running = false;
             this.unbalanced = false;
+            this.isClimbing = false;
         }
     }
 
@@ -81,7 +83,18 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            agentCombatManager.UpdateAgentCombat();
+            if (combatStates.isClimbing)
+            {
+                if (!splineAnimation.IsPlaying)
+                {
+                   monsterAnimator.SetBool("Climbing", false);
+                   combatStates.isClimbing = false;
+                }
+            }
+            else
+            {
+                agentCombatManager.UpdateAgentCombat();
+            }
         }
 
 
@@ -199,6 +212,8 @@ namespace DefaultNamespace
         {
             monsterAnimator.SetTrigger("Die");
             combatStates.stunned = true;
+            if (AgentData.merlockType == MerlockType.Ship)
+                navMeshAgent.destination = transform.position;
             StartCoroutine(Death());
         }
 

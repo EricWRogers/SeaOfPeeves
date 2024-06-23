@@ -274,6 +274,7 @@ MonoBehaviour:
     avoiding: 0
     isGettingHit: 0
     IsAttacking: 0
+  swishAudio: {fileID: 0}
   playerGameObject: {fileID: 7904859016607482259, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
   agentHealth: 0
   playerAICombatState: {fileID: 0}
@@ -614,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de7cc2df40f973e40b1ef8c0ea1f11a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de7cc2df40f973e40b1ef8c0ea1f11a9, type: 3}
       propertyPath: m_LocalPosition.z
