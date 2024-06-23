@@ -67,16 +67,14 @@ public class Harpoon : MonoBehaviour
             {
                 c.enabled = false;
             }
-        
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
 
-            if (other.gameObject.GetComponent<SuperPupSystems.Helper.Health>() == null)
+            if (other.gameObject.tag == "Grabbable" && other.gameObject.GetComponent<SuperPupSystems.Helper.Health>() == null)
             {
-                other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                other.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 Destroy(other.gameObject.GetComponent<Rigidbody>());
                 other.gameObject.transform.parent = tip;
+                Destroy(other);
+                hitSomething = true;
+                return;
             }
             hitSomething = true;
         }

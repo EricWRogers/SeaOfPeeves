@@ -176,13 +176,24 @@ public class MapGenerator : MonoBehaviour
 }
 
 [System.Serializable]
+public struct PrefabInfo
+{
+    public GameObject prefab;
+    public float heightOffset;
+    public Vector3 addedScale;
+    public Vector3 addedRotate;
+
+    List<PrefabInfo> cluster;
+}
+
+[System.Serializable]
 public struct TerrainType {
     public string name;
     [Range(0,1)]
     public float height;
     public Color color;
 
-    public List<GameObject> prefabs;
+    public List<PrefabInfo> prefabs;
 }
 
 public struct MapData

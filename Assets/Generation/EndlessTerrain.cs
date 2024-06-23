@@ -219,13 +219,14 @@ public class EndlessTerrain : MonoBehaviour
                                                     {
                                                         int index = Random.Range(0, terrain.prefabs.Count - 1);
 
-                                                        if (terrain.prefabs[index])
+                                                        if (terrain.prefabs[index].prefab)
                                                         {
-                                                            GameObject.Instantiate(terrain.prefabs[index], hit.point, Quaternion.identity, meshObject.transform);
+                                                            GameObject go = GameObject.Instantiate(terrain.prefabs[index].prefab, hit.point, Quaternion.identity, meshObject.transform);
+                                                            go.transform.position += new Vector3(0, terrain.prefabs[index].heightOffset, 0);
+                                                            Debug.DrawRay(randomPosition, Vector3.down * 100, Color.red, 5f);
+                                                            i++;
+                                                            break;
                                                         }
-                                                        
-                                                        i++;
-                                                        break;
                                                     }
                                                 }
                                             }
@@ -238,8 +239,6 @@ public class EndlessTerrain : MonoBehaviour
                                         
                                     }
                                 }
-
-                                Debug.DrawRay(randomPosition, Vector3.down * 100, Color.red, 5f); // Draw the ray for visualization
                             }
                         }
                         else if (!collisionLODMesh.hasRequestedMesh)
