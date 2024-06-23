@@ -27,8 +27,8 @@ public class EndlessTerrain : MonoBehaviour
 
         maxViewDistance = detailLevels[detailLevels.Length - 1].visibleDstThreshold;
         chunkSize = MapGenerator.mapChuckSize - 1;
-        chunkVisibleInViewDistance = Mathf.RoundToInt(maxViewDistance/chunkSize);
-        
+        chunkVisibleInViewDistance = Mathf.RoundToInt(maxViewDistance / chunkSize);
+
         UpdateVisibleChunks();
     }
 
@@ -51,15 +51,15 @@ public class EndlessTerrain : MonoBehaviour
         }
         terrainChunksVisibleLastUpdate.Clear();
 
-        int currentChunkCoordX = Mathf.RoundToInt(viewerPosition.x/chunkSize);
-        int currentChunkCoordY = Mathf.RoundToInt(viewerPosition.y/chunkSize);
+        int currentChunkCoordX = Mathf.RoundToInt(viewerPosition.x / chunkSize);
+        int currentChunkCoordY = Mathf.RoundToInt(viewerPosition.y / chunkSize);
 
         for (int yOffset = -chunkVisibleInViewDistance; yOffset <= chunkVisibleInViewDistance; yOffset++)
         {
             for (int xOffset = -chunkVisibleInViewDistance; xOffset <= chunkVisibleInViewDistance; xOffset++)
             {
                 Vector2 viewedChunkCoord = new Vector2(currentChunkCoordX + xOffset, currentChunkCoordY + yOffset);
-                
+
                 if (terrainChunkDictionary.ContainsKey(viewedChunkCoord))
                 {
                     terrainChunkDictionary[viewedChunkCoord].UpdateTerrainChunk();
@@ -72,7 +72,8 @@ public class EndlessTerrain : MonoBehaviour
         }
     }
 
-    public class TerrainChunk {
+    public class TerrainChunk
+    {
         GameObject meshObject;
         Vector2 position;
         Bounds bounds;
@@ -116,7 +117,7 @@ public class EndlessTerrain : MonoBehaviour
                 if (detailLevels[i].useForCollider)
                 {
                     collisionLODMesh = lodMeshes[i];
-                }   
+                }
             }
 
             mapGenerator.RequestMapData(position, OnMapDataReceived);
@@ -151,13 +152,89 @@ public class EndlessTerrain : MonoBehaviour
 
                 if (visible)
                 {
+                    if (meshCollider.transform.childCount == 0)
+                    {
+                        for (int i = 0; i < 400; i++)
+                        {
+                            Vector3 randomPosition = GetRandomPositionInBounds(bounds);
+                            Ray ray = new Ray(randomPosition, Vector3.down);
+                            RaycastHit hit;
+
+                            if (Physics.Raycast(ray, out hit, 100))
+                            {
+                                Renderer renderer = hit.collider.GetComponent<Renderer>();
+                                MeshCollider meshCollider = hit.collider as MeshCollider;
+
+                                if (renderer != null && renderer.material != null && renderer.material.mainTexture != null && meshCollider != null)
+                                {
+                                    Texture2D texture = renderer.material.mainTexture as Texture2D;
+
+                                    // Convert the hit point to texture coordinates
+                                    Vector2 pixelUV = hit.textureCoord;
+                                    pixelUV.x *= texture.width;
+                                    pixelUV.y *= texture.height;
+
+                                    // Ensure the texture is readable
+                                    if (texture.isReadable)
+                                    {
+                                        Color color = texture.GetPixel((int)pixelUV.x, (int)pixelUV.y);
+
+                                        i--;
+
+                                        foreach (TerrainType terrain in MapGenerator.Instance.regions)
+                                        {
+                                            if (color.r - 0.02 < terrain.color.r && color.r + 0.02 > terrain.color.r &&
+                                                color.g - 0.02 < terrain.color.g && color.g + 0.02 > terrain.color.g &&
+                                                color.b - 0.02 < terrain.color.b && color.b + 0.02 > terrain.color.b)
+                                            {
+                                                if (terrain.prefabs.Count != 0)
+                                                {
+                                                    int index = Random.Range(0, terrain.prefabs.Count - 1);
+
+                                                    if (terrain.prefabs[index].prefab)
+                                                    {
+                                                        if (terrain.prefabs[index].chance < 1f && terrain.prefabs[index].chance > 0f)
+                                                        {
+                                                            float chance = Random.Range(0f, 1f);
+                                                            if (terrain.prefabs[index].chance >= chance)
+                                                                break;
+                                                        }
+                                                        GameObject go = GameObject.Instantiate(terrain.prefabs[index].prefab, hit.point, terrain.prefabs[index].prefab.transform.rotation, meshObject.transform);
+                                                        go.transform.position += new Vector3(0, terrain.prefabs[index].heightOffset, 0);
+                                                        go.transform.localScale += new Vector3(
+                                                            Random.Range(0, terrain.prefabs[index].addedScale.x),
+                                                            Random.Range(0, terrain.prefabs[index].addedScale.y),
+                                                            Random.Range(0, terrain.prefabs[index].addedScale.z));
+                                                        go.transform.Rotate(new Vector3(
+                                                            Random.Range(0, terrain.prefabs[index].addedRotate.x),
+                                                            Random.Range(0, terrain.prefabs[index].addedRotate.y),
+                                                            Random.Range(0, terrain.prefabs[index].addedRotate.z)));
+                                                        Debug.DrawRay(randomPosition, Vector3.down * 100, Color.red, 5f);
+                                                        i++;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Debug.LogWarning("Texture is not readable.");
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     int lodIndex = 0;
                     for (int i = 0; i < detailLevels.Length - 1; i++)
                     {
-                        if (viewerDstFromNearestEdge > detailLevels[i].visibleDstThreshold) {
+                        if (viewerDstFromNearestEdge > detailLevels[i].visibleDstThreshold)
+                        {
                             lodIndex = i + 1;
                         }
-                        else {
+                        else
+                        {
                             break;
                         }
                     }
@@ -181,79 +258,6 @@ public class EndlessTerrain : MonoBehaviour
                         if (collisionLODMesh.hasMesh && meshCollider.sharedMesh == null)
                         {
                             meshCollider.sharedMesh = collisionLODMesh.mesh;
-
-                            float heightScale = MapGenerator.Instance.meshmapHeightMultiplier;
-
-                            for (int i = 0; i < 200; i++)
-                            {
-                                Vector3 randomPosition = GetRandomPositionInBounds(bounds);
-                                Ray ray = new Ray(randomPosition, Vector3.down);
-                                RaycastHit hit;
-
-                                if (Physics.Raycast(ray, out hit, 100))
-                                {                                    
-                                    Renderer renderer = hit.collider.GetComponent<Renderer>();
-                                    MeshCollider meshCollider = hit.collider as MeshCollider;
-
-                                    if (renderer != null && renderer.material != null && renderer.material.mainTexture != null && meshCollider != null)
-                                    {
-                                        Texture2D texture = renderer.material.mainTexture as Texture2D;
-
-                                        // Convert the hit point to texture coordinates
-                                        Vector2 pixelUV = hit.textureCoord;
-                                        pixelUV.x *= texture.width;
-                                        pixelUV.y *= texture.height;
-
-                                        // Ensure the texture is readable
-                                        if (texture.isReadable)
-                                        {
-                                            Color color = texture.GetPixel((int)pixelUV.x, (int)pixelUV.y);
-
-                                            i--;
-                                            
-                                            foreach(TerrainType terrain in MapGenerator.Instance.regions)
-                                            {
-                                                if (color.r - 0.02 < terrain.color.r && color.r + 0.02 > terrain.color.r)
-                                                {
-                                                    if (terrain.prefabs.Count != 0)
-                                                    {
-                                                        int index = Random.Range(0, terrain.prefabs.Count - 1);
-
-                                                        if (terrain.prefabs[index].prefab)
-                                                        {
-                                                            if (terrain.prefabs[index].chance < 1f && terrain.prefabs[index].chance > 0f)
-                                                            {
-                                                                float chance = Random.Range(0f,1f);
-                                                                if (terrain.prefabs[index].chance >= chance)
-                                                                    break;
-                                                            }
-                                                            GameObject go = GameObject.Instantiate(terrain.prefabs[index].prefab, hit.point, Quaternion.identity, meshObject.transform);
-                                                            go.transform.position += new Vector3(0, terrain.prefabs[index].heightOffset, 0);
-                                                            go.transform.localScale += new Vector3(
-                                                                Random.Range(0, terrain.prefabs[index].addedScale.x),
-                                                                Random.Range(0, terrain.prefabs[index].addedScale.y),
-                                                                Random.Range(0, terrain.prefabs[index].addedScale.z));
-                                                            go.transform.Rotate(new Vector3(
-                                                                Random.Range(0, terrain.prefabs[index].addedRotate.x),
-                                                                Random.Range(0, terrain.prefabs[index].addedRotate.y),
-                                                                Random.Range(0, terrain.prefabs[index].addedRotate.z)));
-                                                            Debug.DrawRay(randomPosition, Vector3.down * 100, Color.red, 5f);
-                                                            i++;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-                                            Debug.LogWarning("Texture is not readable.");
-                                        }
-
-                                        
-                                    }
-                                }
-                            }
                         }
                         else if (!collisionLODMesh.hasRequestedMesh)
                         {
