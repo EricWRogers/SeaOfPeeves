@@ -29,6 +29,7 @@ public class UnderwaterEffect : MonoBehaviour
         {
             RenderSettings.fogColor = underwaterColor;
             RenderSettings.fogDensity = 0.1f;
+            RenderSettings.fogEndDistance = 50f;
 
             volume.profile = volumeProfile;
         }
@@ -36,6 +37,7 @@ public class UnderwaterEffect : MonoBehaviour
         {
             RenderSettings.fogColor = normalColor;
             RenderSettings.fogDensity = 0.02f;
+            RenderSettings.fogEndDistance = 300f;
 
             volume.profile = null;
         }

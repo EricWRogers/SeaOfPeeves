@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5375905494889123141}
   - component: {fileID: 4547388999726256015}
   - component: {fileID: 1116525211179712281}
+  - component: {fileID: 2108363525541170450}
   m_Layer: 0
   m_Name: Harpoon
   m_TagString: Untagged
@@ -52,6 +53,7 @@ MonoBehaviour:
   returnPoint: {fileID: 0}
   reelPoint: {fileID: 3693672045122762784}
   tip: {fileID: 1856018898756988268}
+  damage: 50
   speed: 20
   rewindSpeed: 15
   ret: 0
@@ -124,6 +126,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.1, z: 0.057020903}
   m_Center: {x: 0, y: 0, z: -0.77851045}
+--- !u!114 &2108363525541170450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6120541199534433222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad54517dc19258185960ef6d2f3a1b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeout:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7811112226345490035}
+        m_TargetAssemblyTypeName: Harpoon, Assembly-CSharp
+        m_MethodName: TimeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  autoStart: 1
+  autoRestart: 0
+  countDownTime: 2
+  timeScale: 1
 --- !u!1 &7043418992373656351
 GameObject:
   m_ObjectHideFlags: 0
