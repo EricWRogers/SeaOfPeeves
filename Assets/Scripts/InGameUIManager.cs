@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,8 @@ public class InGameUIManager : SingletonMonoBehaviour<InGameUIManager>
     private PlayerInputActions playerControls;
     private InputAction pause;
 
+    public TextMeshProUGUI scoreUI;
+    public GameObject winScreen;
 
     new void Awake()
     {
@@ -20,6 +23,7 @@ public class InGameUIManager : SingletonMonoBehaviour<InGameUIManager>
 
         playerControls = new PlayerInputActions();
 
+        winScreen.SetActive(false);
         pausePanel.SetActive(false);
         paused = false;
     }

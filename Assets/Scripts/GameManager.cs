@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
@@ -8,13 +9,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public PlayerMovment player;
 
+    public float winDelay = 3f;
     public int scoreToWin;
 
-    private int currentScore = 0; 
+    private int currentScore = 0;
 
-    public void RegisterPlayer(PlayerMovment _player)
+    public string mainMenuScene;
+
+    private void Start()
     {
-        player = _player;   
+        InGameUIManager.Instance.scoreUI.text = $"Score: {currentScore}/{scoreToWin}";
     }
 
     public void Respawn()
@@ -23,5 +27,25 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         {
             player.transform.position = respawnPoint.position;
         }
+    }
+
+    public void IncrementScore(int _scoreToAdd)
+    {
+        currentScore += _scoreToAdd;
+        InGameUIManager.Instance.scoreUI.text = $"Score: {currentScore}/{scoreToWin}";
+
+        if(currentScore >= scoreToWin)
+        {
+            StartCoroutine(WinGame());
+        }
+    }
+
+    public IEnumerator WinGame()
+    {
+        InGameUIManager.Instance.winScreen.SetActive(true);
+        yield return new WaitForSeconds(winDelay);
+
+        SceneManager.LoadScene(mainMenuScene);
+
     }
 }

@@ -24,6 +24,7 @@ public class PlayerMovment : MonoBehaviour
     private InputAction move;
     private InputAction look;
     private InputAction jump;
+    private InputAction backToShip;
     private float jumpTimer = 0;
     private bool hitSomething = false;
 
@@ -37,10 +38,15 @@ public class PlayerMovment : MonoBehaviour
         move = playerControls.Player.Move;
         look = playerControls.Player.Look;
         jump = playerControls.Player.Jump;
+        backToShip = playerControls.Player.Return;
 
         move.Enable();
         look.Enable();
         jump.Enable();
+        backToShip.Enable();
+
+        backToShip.performed += ReturnInput;
+
     }
     private void OnDisable()
     {
@@ -52,6 +58,14 @@ public class PlayerMovment : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void ReturnInput(InputAction.CallbackContext context)
+    {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.Respawn();
+        }
     }
 
     // Update is called once per frame
