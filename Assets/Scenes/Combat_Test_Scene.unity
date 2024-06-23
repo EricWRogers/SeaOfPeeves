@@ -163,20 +163,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7904859016607482259, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
   m_PrefabInstance: {fileID: 346506666}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &284052206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284052197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7852058c33621143a2c8cbd0c123c55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  simultaneousAttackers: 1
-  attackers: []
 --- !u!1001 &303041806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -255,31 +241,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.29
+      value: -28.28
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.61
+      value: 7.9
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.28
+      value: -2.61
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.63742405
+      value: 0.14723478
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.77051324
+      value: -0.98910165
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -287,7 +273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -100.8
+      value: -163.067
       objectReference: {fileID: 0}
     - target: {fileID: 5646879826467323412, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -300,10 +286,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7904859016607482259, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 284052206}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79f796e23f1a8a54cbafef8c218f4c36, type: 3}
 --- !u!1 &431235026
 GameObject:
@@ -548,71 +531,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1538840641
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.003
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6754772154284410090, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_Name
-      value: Merlock (NPC)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6754772154284410090, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7742443125538834035, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
-      propertyPath: playerGameObject
-      value: 
-      objectReference: {fileID: 284052197}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
 --- !u!1001 &1625456144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -665,14 +583,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Merlock_OnShip (NPC)
       objectReference: {fileID: 0}
-    - target: {fileID: 7243017024197245233, guid: c63fbf2154ea34b42a816127e741a19c, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7742443125538834035, guid: c63fbf2154ea34b42a816127e741a19c, type: 3}
-      propertyPath: AgentData
-      value: 
-      objectReference: {fileID: 11400000, guid: 7ce28767394a036489eddd63b0bd19ea, type: 2}
     - target: {fileID: 7742443125538834035, guid: c63fbf2154ea34b42a816127e741a19c, type: 3}
       propertyPath: playerGameObject
       value: 
@@ -800,6 +710,67 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1001 &2134722731
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.19418
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.705761
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275364590815995588, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754772154284410090, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: m_Name
+      value: Merlock_Underwater (NPC)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742443125538834035, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
+      propertyPath: playerGameObject
+      value: 
+      objectReference: {fileID: 284052197}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5063d7ca647c71f4da41a0f532112c7a, type: 3}
 --- !u!1001 &4172280325497177054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -874,6 +845,6 @@ SceneRoots:
   - {fileID: 638231909}
   - {fileID: 4172280325497177054}
   - {fileID: 346506666}
-  - {fileID: 1538840641}
   - {fileID: 303041806}
   - {fileID: 1625456144}
+  - {fileID: 2134722731}

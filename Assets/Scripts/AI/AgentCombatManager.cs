@@ -194,14 +194,11 @@ public class AgentCombatManager
 		//Place holder 
 		if (ThisAgent.combatStates.attacking)
 		{
-			if (Time.fixedTime - placeHolderAnimationStart > .5f)
+			ThisAgent.TrackTargetAttack();
+			if (ThisAgent.damageCollider != null)
 			{
-				if (ThisAgent.damageCollider != null)
-				{
-					ThisAgent.damageCollider.SetActive(true);
-				}
+				ThisAgent.damageCollider.SetActive(true);
 			}
-			
 			if (Time.fixedTime - placeHolderAnimationStart > .5f)
 			{
 				ThisAgent.combatStates.attacking = false;
