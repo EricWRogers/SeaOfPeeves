@@ -16,7 +16,7 @@ MonoBehaviour:
   AgentHealth: 100
   damage: 10
   movementSpeed: 2.5
-  attackDistance: 2.5
+  attackDistance: 2
   dangerDistance: 8
   trackSpeed: 5
   attackRate: 5
