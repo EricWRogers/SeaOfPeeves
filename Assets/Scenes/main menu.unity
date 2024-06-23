@@ -322,7 +322,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 220793931}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 619312831}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ToggleCredits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &220793931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +705,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayScene: GameplayMain
+  creditObject: {fileID: 1294791431}
+  splashObject: {fileID: 965611667}
 --- !u!1 &657946466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 9.9999275, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016875612
@@ -1691,15 +1705,15 @@ RectTransform:
   m_GameObject: {fileID: 2033975881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5467051, y: 0.5467051, z: 0.5467051}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1294791432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 76, y: 0}
-  m_SizeDelta: {x: 228.2529, y: 378.4404}
+  m_AnchoredPosition: {x: -116, y: 105}
+  m_SizeDelta: {x: 525.7809, y: 378.4404}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033975883
 MonoBehaviour:
@@ -1721,7 +1735,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Credits:\r\n\r\nEricWRogers (YourGeekEric)\r\n- Island Generation\r\n-
+    Spawning\r\n\r\nBen Campbell\r\n- Low Poly Water Wizard\r\n\r\nZennyTheDreamer\r\n-
+    AI Behaviour and Spawning\u200B\u200B\r\n\r\nBlake Henderson\r\n- Player Controls\r\n-
+    Boat Behaviour\r\n- Harpoon Logic\r\n\r\nTomas Abrams (BizarreFogMedia)\r\n-
+    Lizard Man Model/Animations\r\n- Game Objective Behaviour\r\n- Audio Implementation\r\n\r\nTakasoo\r\n-
+    SFX Creation\r\n- Render Texture Camera\r\n\u200B\r\nDaltonBarnett\r\n- ........(Boat)\r\n\r\nSpicyGoth\r\n-
+    Treasure Chest\r\n- Seagull\u200Bs\r\n\r\nAdditional assets provided by Andrew
+    Walsh"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1748,8 +1769,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.21
-  m_fontSizeBase: 21.21
+  m_fontSize: 19.1
+  m_fontSizeBase: 19.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

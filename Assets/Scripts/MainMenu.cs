@@ -7,6 +7,20 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public string gameplayScene;
+
+    public GameObject creditObject;
+    public GameObject splashObject;
+
+    public void Start()
+    {
+        creditObject.SetActive(false);    
+    }
+
+    public void ToggleCredits()
+    {
+        creditObject.SetActive(!creditObject.activeSelf);
+        splashObject.SetActive(!splashObject.activeSelf);
+    }
   
 
     public void StartGame()

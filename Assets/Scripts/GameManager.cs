@@ -45,6 +45,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         InGameUIManager.Instance.winScreen.SetActive(true);
         yield return new WaitForSeconds(winDelay);
 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(mainMenuScene);
 
     }
