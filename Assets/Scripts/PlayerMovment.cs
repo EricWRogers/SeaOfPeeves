@@ -98,10 +98,12 @@ public class PlayerMovment : MonoBehaviour
                 else if (temp == "Forward")
                 {
                     hit.transform.parent.GetComponent<BoatControls>().accelerate();
+                    hit.transform.GetComponent<Animator>().SetTrigger("Forward");
                 }
                 else if (temp == "Backwards")
                 {
                     hit.transform.parent.GetComponent<BoatControls>().decelerate();
+                    hit.transform.GetComponent<Animator>().SetTrigger("Backwards");
                 }
                 else if (temp == "Anchor")
                 {
