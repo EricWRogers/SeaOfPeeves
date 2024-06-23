@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4beb0fd4cdf4615bf1d4677d4ac9aff, type: 3}
-  m_Name: Merlock Data
+  m_Name: ShipMerlock Data
   m_EditorClassIdentifier: 
   AgentHealth: 100
   movementSpeed: 1
