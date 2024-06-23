@@ -11,6 +11,7 @@ public class PlayerMovment : MonoBehaviour
     public float interactRange = 5f;
     public float lookSensitivity = 1f;
     public float clampRange = 45f;
+    public float jumpTime = 1.0f;
     public GameObject cam;
     //public GameObject jumpPoint;
 
@@ -23,6 +24,7 @@ public class PlayerMovment : MonoBehaviour
     private InputAction move;
     private InputAction look;
     private InputAction jump;
+    private float jumpTimer = 0;
     private bool hitSomething = false;
 
     private void Awake()
@@ -55,6 +57,7 @@ public class PlayerMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        jumpTimer += Time.deltaTime;
         moveDirection = move.ReadValue<Vector2>();
         lookDirection = look.ReadValue<Vector2>();
         RaycastHit hit;
@@ -98,7 +101,7 @@ public class PlayerMovment : MonoBehaviour
             Debug.Log("Jump");
             hitSomething = Physics.Raycast(transform.position, Vector3.down, out _, 1.5f);
             Debug.Log(hitSomething);
-            if(hitSomething)
+            if(hitSomething && jumpTimer >= jumpTime)
             { 
                 rb.AddForce(Vector3.up * jumpForce);
             }
