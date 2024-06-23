@@ -49,6 +49,11 @@ public class Harpoon : MonoBehaviour
         }
     }
 
+    public void TimeOut()
+    {
+        ret = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Grabbable" || other.isTrigger == false)
@@ -57,8 +62,7 @@ public class Harpoon : MonoBehaviour
             hitSomething = true;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            other.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            
             foreach (Collider c in GetComponents<Collider>())
             {
                 c.enabled = false;
@@ -67,8 +71,13 @@ public class Harpoon : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            Destroy(other.gameObject.GetComponent<Rigidbody>());
-            other.gameObject.transform.parent = tip;
+            if (other.gameObject.GetComponent<SuperPupSystems.Helper.Health>() == null)
+            {
+                other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                other.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                Destroy(other.gameObject.GetComponent<Rigidbody>());
+                other.gameObject.transform.parent = tip;
+            }
             hitSomething = true;
         }
 
