@@ -7,17 +7,11 @@ using UnityEngine.Rendering;
 public class UnderwaterEffect : MonoBehaviour
 {
     public Color underwaterColor = new Color(0.0f, 0.4f, 0.7f, 0.6f);
-
     public Volume volume;
-
     public VolumeProfile volumeProfile;
-
     private Color normalColor;
-
     public float height = 18f;
-
     private bool isUnderwater = false;
-
     private void Start()
     {
         normalColor = RenderSettings.fogColor;
