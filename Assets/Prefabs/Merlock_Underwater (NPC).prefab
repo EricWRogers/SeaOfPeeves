@@ -275,13 +275,16 @@ MonoBehaviour:
     avoiding: 0
     isGettingHit: 0
     IsAttacking: 0
+    isClimbing: 0
   swishAudio: {fileID: 8075418776950436678}
   playerGameObject: {fileID: 0}
   agentHealth: 0
+  playerAICombatState: {fileID: 0}
   attackIndicator: {fileID: 3361973320274762987}
   damageCollider: {fileID: 8625253432297850949}
   monsterAnimator: {fileID: 5848294716927329699}
   navMeshAgent: {fileID: 0}
+  splineAnimation: {fileID: 0}
 --- !u!54 &7243017024197245233
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -404,8 +407,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxHealth: 100
-  currentHealth: 0
+  m_maxHealth: 100
+  m_currentHealth: 0
 --- !u!82 &4235896049984549436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -825,13 +828,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8625253432297850949}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.29151773, y: 0.011546971, z: 0.019203616, w: 0.956303}
+  m_LocalRotation: {x: 0.08458973, y: 0.017764531, z: 0.024393564, w: 0.9959588}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.06065247, y: 0.060652476, z: 0.06065247}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9203537618946734020}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9.65, y: 2.297, z: 3}
 --- !u!65 &5859068476762696432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -851,8 +854,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.18227945, y: 0.43707117, z: 0.6598079}
-  m_Center: {x: -0.017689623, y: 0.18853511, z: 0.26990396}
+  m_Size: {x: 0.18227945, y: 0.20991753, z: 1.0026445}
+  m_Center: {x: -0.017689647, y: 0.0749505, z: 0.44132268}
 --- !u!114 &4306207665856322203
 MonoBehaviour:
   m_ObjectHideFlags: 0

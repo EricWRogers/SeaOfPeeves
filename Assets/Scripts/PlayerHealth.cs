@@ -2,6 +2,7 @@ using SuperPupSystems.Helper;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -40,6 +41,9 @@ public class PlayerHealth : MonoBehaviour
     public void OutOfHealth()
     {
         // Respawn and reset things here
-        health.Revive();
+        //health.Revive();
+        Debug.Log("OutOfHealth");
+        SceneManager.LoadScene(GameManager.Instance.mainMenuScene);
+        
     }
 }
