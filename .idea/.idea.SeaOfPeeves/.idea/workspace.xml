@@ -5,14 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2e161a5-124f-4602-8f30-6a97afedbce3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShipMonsterSpawner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ShipMonsterSpawner.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SeaOfPeeves/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeaOfPeeves/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Boat2.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Boat2.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Characters/Merlock/GEO/ToadinatorGeo.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Characters/Merlock/GEO/ToadinatorGeo.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Wheel.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Wheel.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/harpoon gun.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/harpoon gun.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/harpoon.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/harpoon.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/lever.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/lever.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/leverbase.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/leverbase.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/treasure-chest/source/Сундук.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/treasure-chest/source/Сундук.fbx.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Merlock_OnShip (NPC).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Merlock_OnShip (NPC).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Merlock_Underwater (NPC).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Merlock_Underwater (NPC).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Monster Spawner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Monster Spawner.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Combat_Test_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Combat_Test_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AgentCombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AgentCombatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AgentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AgentData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/DamagerCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/DamagerCollider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/MonsterAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/MonsterAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/ShipMerlock Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/ShipMerlock Data.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MonsterSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MonsterSpawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +33,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/09/6678c666/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/0c/15a836d5/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/26/359132ac/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/c6/3993424c/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/PlayerAICombatState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -107,7 +117,7 @@
       <workItem from="1719017308667" duration="24000" />
       <workItem from="1719017348696" duration="21000" />
       <workItem from="1719066997302" duration="33439000" />
-      <workItem from="1719143112103" duration="14312000" />
+      <workItem from="1719143112103" duration="21217000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Splines;
 using Random = UnityEngine.Random;
 
 public class MonsterSpawner : MonoBehaviour
@@ -20,6 +21,8 @@ public class MonsterSpawner : MonoBehaviour
     public float spawnRadius = 3f;
     private GameObject playerGameObject;
     // Start is called before the first frame update
+
+   
     public void Start()
     {
         _collider = GetComponent<Collider>();
@@ -28,7 +31,7 @@ public class MonsterSpawner : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        
+        StopCoroutine(DespawnMonsters());
         if (collider.gameObject.CompareTag(playerTag))
         {
             playerGameObject = collider.gameObject;

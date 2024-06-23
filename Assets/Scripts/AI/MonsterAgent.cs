@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SuperPupSystems.Helper;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Splines;
 using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
@@ -54,15 +55,17 @@ namespace DefaultNamespace
         public float agentHealth;
         private int simultaneousAttackers = 1;
         public AgentCombatManager agentCombatManager;
-        private PlayerAICombatState playerAICombatState;
+        public PlayerAICombatState playerAICombatState;
         public GameObject attackIndicator;
         public GameObject damageCollider;
         public Animator monsterAnimator;
         private float randomizedSpeed;
         public NavMeshAgent navMeshAgent;
+        public SplineAnimate splineAnimation;
         private void Start()
         {
-            playerAICombatState = playerGameObject.GetComponent<PlayerAICombatState>();
+            if(playerGameObject != null)
+              playerAICombatState = playerGameObject.GetComponent<PlayerAICombatState>();
             agentCombatManager = new AgentCombatManager(this);
             agentHealth = AgentData.AgentHealth;
             randomizedSpeed = AgentData.movementSpeed + Random.Range(-.2f, .5f);
@@ -173,7 +176,8 @@ namespace DefaultNamespace
             }
             else
             {
-                navMeshAgent.destination = targetPosition;
+                if(navMeshAgent.isOnNavMesh)
+                 navMeshAgent.destination = targetPosition;
                 navMeshAgent.speed = AgentData.movementSpeed;
             }
             Vector3 localDirection = transform.InverseTransformDirection(direction);
