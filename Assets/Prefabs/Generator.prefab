@@ -350,7 +350,7 @@ MonoBehaviour:
     color: {r: 0.15961254, g: 0.37069297, b: 0.28022993, a: 0}
     prefabs:
     - {fileID: 3316101092013886749, guid: 769ebc6e9ee65d04e990d83c85d8cab3, type: 3}
-    - {fileID: 7355204691594696069, guid: 4e6272b10cb01dd40a11a0d81453b32f, type: 3}
+    - {fileID: 3200396190907065114, guid: 05c43ead84115454d9a2fa417f09a9e2, type: 3}
     - {fileID: 3264529315954093995, guid: c696d20f9c92e474798f501d47ea0f97, type: 3}
     - {fileID: 7184309914424149898, guid: 0cf75dfa9a1bc2840bcf553634d578b3, type: 3}
     - {fileID: 7184309914424149898, guid: 0cf75dfa9a1bc2840bcf553634d578b3, type: 3}
@@ -362,7 +362,7 @@ MonoBehaviour:
     height: 0.228
     color: {r: 0.35686275, g: 0.6039216, b: 0.5561263, a: 1}
     prefabs:
-    - {fileID: 7355204691594696069, guid: 4e6272b10cb01dd40a11a0d81453b32f, type: 3}
+    - {fileID: 0}
     - {fileID: 6043505092378639620, guid: 588e69621c4cfad45a99a3300f5b6157, type: 3}
     - {fileID: 7184309914424149898, guid: 0cf75dfa9a1bc2840bcf553634d578b3, type: 3}
     - {fileID: 0}
@@ -403,8 +403,8 @@ MonoBehaviour:
     height: 0.772
     color: {r: 0.2627451, g: 0.20784314, b: 0.2, a: 0}
     prefabs:
-    - {fileID: 3264529315954093995, guid: c696d20f9c92e474798f501d47ea0f97, type: 3}
     - {fileID: 7184309914424149898, guid: 0cf75dfa9a1bc2840bcf553634d578b3, type: 3}
+    - {fileID: 3264529315954093995, guid: c696d20f9c92e474798f501d47ea0f97, type: 3}
 --- !u!114 &8384136781722394686
 MonoBehaviour:
   m_ObjectHideFlags: 0
