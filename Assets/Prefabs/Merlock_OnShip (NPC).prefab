@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 7243017024197245233}
   - component: {fileID: 4870233095503087341}
   - component: {fileID: 4165975147848189318}
+  - component: {fileID: 6668174489233471216}
   m_Layer: 0
   m_Name: Merlock_OnShip (NPC)
   m_TagString: Agent
@@ -278,6 +279,7 @@ MonoBehaviour:
   attackIndicator: {fileID: 3361973320274762987}
   damageCollider: {fileID: 8625253432297850949}
   monsterAnimator: {fileID: 5848294716927329699}
+  navMeshAgent: {fileID: 0}
 --- !u!54 &7243017024197245233
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -303,7 +305,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &4870233095503087341
 CapsuleCollider:
@@ -350,6 +352,32 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6668174489233471216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754772154284410090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604dfbbf654f92618bc36972daaa4968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  healed:
+    m_PersistentCalls:
+      m_Calls: []
+  hurt:
+    m_PersistentCalls:
+      m_Calls: []
+  outOfHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1 &8330957234957614674
 GameObject:
   m_ObjectHideFlags: 0

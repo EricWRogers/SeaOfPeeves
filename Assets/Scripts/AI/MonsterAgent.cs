@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SuperPupSystems.Helper;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -69,6 +70,9 @@ namespace DefaultNamespace
             {
                 navMeshAgent = GetComponent<NavMeshAgent>();
             }
+            
+            GetComponent<Health>().maxHealth = (int)AgentData.AgentHealth;
+            GetComponent<Health>().currentHealth = (int)AgentData.AgentHealth;
         }
 
         private void Update()
