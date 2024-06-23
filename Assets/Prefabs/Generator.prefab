@@ -350,62 +350,66 @@ MonoBehaviour:
     color: {r: 0.15961254, g: 0.37069297, b: 0.28022993, a: 0}
     prefabs:
     - prefab: {fileID: 7184309914424149898, guid: 0cf75dfa9a1bc2840bcf553634d578b3, type: 3}
+      chance: 0.5
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 3200396190907065114, guid: 05c43ead84115454d9a2fa417f09a9e2, type: 3}
+      chance: 0.5
       heightOffset: 1
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 3264529315954093995, guid: c696d20f9c92e474798f501d47ea0f97, type: 3}
+      chance: 0.5
       heightOffset: 0
       addedScale: {x: 2, y: 2, z: 2}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 6843571173000057081, guid: 5993719db7ac34b4cb388a0ed04df8d0, type: 3}
+      chance: 0.5
       heightOffset: 0
       addedScale: {x: 2, y: 2, z: 2}
       addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
+    - prefab: {fileID: 3460399131278520206, guid: 7087f4ab9f862c44db38d29751936b7a, type: 3}
+      chance: 1
       heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
+      addedScale: {x: 2, y: 2, z: 2}
+      addedRotate: {x: 0, y: 90, z: 0}
+    - prefab: {fileID: 1211256498381905253, guid: f0de2c38508c0584a8aec93686fb908f, type: 3}
+      chance: 1
       heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
+      addedScale: {x: 2, y: 2, z: 2}
+      addedRotate: {x: 0, y: 90, z: 0}
+    - prefab: {fileID: 4280516003222233312, guid: 09b4b47599c7e9047ac50a26f7a9664a, type: 3}
+      chance: 1
       heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
+      addedScale: {x: 2, y: 2, z: 2}
+      addedRotate: {x: 0, y: 90, z: 0}
   - name: Water Shallow
     height: 0.228
     color: {r: 0.35686275, g: 0.6039216, b: 0.5561263, a: 1}
     prefabs:
     - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
@@ -414,14 +418,17 @@ MonoBehaviour:
     color: {r: 0.8235294, g: 0.8156863, b: 0.48235294, a: 0}
     prefabs:
     - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
@@ -429,23 +436,13 @@ MonoBehaviour:
     height: 0.412
     color: {r: 0.8235294, g: 0.8156863, b: 0.48235294, a: 1}
     prefabs:
-    - prefab: {fileID: 0}
+    - prefab: {fileID: 8795865322319972867, guid: 08c362a3ea3c48046b0055aaf9b9420a, type: 3}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
+    - prefab: {fileID: 3316101092013886749, guid: 769ebc6e9ee65d04e990d83c85d8cab3, type: 3}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
@@ -454,50 +451,60 @@ MonoBehaviour:
     color: {r: 0.6044474, g: 0.7322296, b: 0.23823233, a: 1}
     prefabs:
     - prefab: {fileID: 7510028821635010659, guid: 9a6120e5150e39748b67c2a1500de74a, type: 3}
+      chance: 0
       heightOffset: 1
       addedScale: {x: 0, y: 1, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
     - prefab: {fileID: 6043505092378639620, guid: 588e69621c4cfad45a99a3300f5b6157, type: 3}
+      chance: 0
       heightOffset: 1
       addedScale: {x: 0, y: 1, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
+    - prefab: {fileID: 5433513375213630421, guid: 6ca5571d418116146a17600e24753ac2, type: 3}
+      chance: 0
+      heightOffset: 1
+      addedScale: {x: 0, y: 1, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
+    - prefab: {fileID: 838483194608465999, guid: 8813dc3b0e154d741b68e8ecaab9f77c, type: 3}
+      chance: 0
+      heightOffset: 1
+      addedScale: {x: 0, y: 1, z: 0}
+      addedRotate: {x: 0, y: 0, z: 0}
+    - prefab: {fileID: 8795865322319972867, guid: 08c362a3ea3c48046b0055aaf9b9420a, type: 3}
+      chance: 0
+      heightOffset: 1
+      addedScale: {x: 0, y: 1, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
   - name: Rock
     height: 0.608
     color: {r: 0.16413641, g: 0.5819472, b: 0.26455912, a: 0}
     prefabs:
     - prefab: {fileID: 2165198771451793160, guid: a043f6a4978c73e4e87624548e9f9da5, type: 3}
+      chance: 0
       heightOffset: 1
       addedScale: {x: 0, y: 1, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
+    - prefab: {fileID: 5433513375213630421, guid: 6ca5571d418116146a17600e24753ac2, type: 3}
+      chance: 0
+      heightOffset: 1
+      addedScale: {x: 0, y: 1, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
+    - prefab: {fileID: 838483194608465999, guid: 8813dc3b0e154d741b68e8ecaab9f77c, type: 3}
+      chance: 0
+      heightOffset: 1
+      addedScale: {x: 0, y: 1, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
+    - prefab: {fileID: 3316101092013886749, guid: 769ebc6e9ee65d04e990d83c85d8cab3, type: 3}
+      chance: 0
+      heightOffset: 1
+      addedScale: {x: 0, y: 1, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
   - name: Rock 2
     height: 0.772
     color: {r: 0.2627451, g: 0.20784314, b: 0.2, a: 0}
     prefabs:
     - prefab: {fileID: 0}
-      heightOffset: 0
-      addedScale: {x: 0, y: 0, z: 0}
-      addedRotate: {x: 0, y: 0, z: 0}
-    - prefab: {fileID: 0}
+      chance: 0
       heightOffset: 0
       addedScale: {x: 0, y: 0, z: 0}
       addedRotate: {x: 0, y: 0, z: 0}
