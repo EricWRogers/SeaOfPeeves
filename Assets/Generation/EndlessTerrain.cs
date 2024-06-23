@@ -221,8 +221,22 @@ public class EndlessTerrain : MonoBehaviour
 
                                                         if (terrain.prefabs[index].prefab)
                                                         {
+                                                            if (terrain.prefabs[index].chance < 1f && terrain.prefabs[index].chance > 0f)
+                                                            {
+                                                                float chance = Random.Range(0f,1f);
+                                                                if (terrain.prefabs[index].chance >= chance)
+                                                                    break;
+                                                            }
                                                             GameObject go = GameObject.Instantiate(terrain.prefabs[index].prefab, hit.point, Quaternion.identity, meshObject.transform);
                                                             go.transform.position += new Vector3(0, terrain.prefabs[index].heightOffset, 0);
+                                                            go.transform.localScale += new Vector3(
+                                                                Random.Range(0, terrain.prefabs[index].addedScale.x),
+                                                                Random.Range(0, terrain.prefabs[index].addedScale.y),
+                                                                Random.Range(0, terrain.prefabs[index].addedScale.z));
+                                                            go.transform.Rotate(new Vector3(
+                                                                Random.Range(0, terrain.prefabs[index].addedRotate.x),
+                                                                Random.Range(0, terrain.prefabs[index].addedRotate.y),
+                                                                Random.Range(0, terrain.prefabs[index].addedRotate.z)));
                                                             Debug.DrawRay(randomPosition, Vector3.down * 100, Color.red, 5f);
                                                             i++;
                                                             break;

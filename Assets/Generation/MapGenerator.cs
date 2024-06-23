@@ -179,6 +179,7 @@ public class MapGenerator : MonoBehaviour
 public struct PrefabInfo
 {
     public GameObject prefab;
+    public float chance;
     public float heightOffset;
     public Vector3 addedScale;
     public Vector3 addedRotate;
