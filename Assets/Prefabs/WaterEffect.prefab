@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 100, y: 10, z: 100}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 100, y: 18, z: 100}
+  m_Center: {x: 0, y: 9, z: 0}
 --- !u!114 &8360537338274200196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1474a17d5a708408b9c70c588f5117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  underwaterColor: {r: 0, g: 0.4, b: 0.7, a: 0.6}
+  underwaterColor: {r: 0.3443396, g: 0.72005516, b: 1, a: 0.6}
   volume: {fileID: 3073260103667443369}
   volumeProfile: {fileID: 11400000, guid: e8bcb8e5457c44f4487c549361c4c2d6, type: 2}
 --- !u!1 &4254294486294057412
@@ -127,6 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5075611394048078246}
+  - component: {fileID: 448564052853285853}
   m_Layer: 0
   m_Name: WaterEffect
   m_TagString: Untagged
@@ -151,3 +152,18 @@ Transform:
   - {fileID: 5291964115753315299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &448564052853285853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828737808245003722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e150f42e4dc7d14459e593b8f07c405c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterSurfacePrefab: {fileID: 4507554638825087717, guid: 56a42f3b1dd44944aa6b3aa1cb736179, type: 3}
+  gridSize: 100
+  yLevel: 18

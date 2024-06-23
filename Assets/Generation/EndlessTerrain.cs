@@ -133,6 +133,15 @@ public class EndlessTerrain : MonoBehaviour
             UpdateTerrainChunk();
         }
 
+        Vector3 GetRandomPositionInBounds(Bounds bounds)
+        {
+            float x = position.x + Random.Range(bounds.min.x, bounds.max.x);
+            float y = 50f; // Starting from the top of the bounds
+            float z = position.y + Random.Range(bounds.min.x, bounds.max.x);
+
+            return new Vector3(x, y, z);
+        }
+
         public void UpdateTerrainChunk()
         {
             if (mapDataReceived)
@@ -169,9 +178,57 @@ public class EndlessTerrain : MonoBehaviour
 
                     if (lodIndex == 0)
                     {
-                        if (collisionLODMesh.hasMesh)
+                        if (collisionLODMesh.hasMesh && meshCollider.sharedMesh == null)
                         {
                             meshCollider.sharedMesh = collisionLODMesh.mesh;
+
+                            float heightScale = MapGenerator.Instance.meshmapHeightMultiplier;
+
+                            for (int i = 0; i < 100; i++)
+                            {
+                                Vector3 randomPosition = GetRandomPositionInBounds(bounds);
+                                Ray ray = new Ray(randomPosition, Vector3.down);
+                                RaycastHit hit;
+
+                                if (Physics.Raycast(ray, out hit, 100))
+                                {                                    
+                                    Renderer renderer = hit.collider.GetComponent<Renderer>();
+                                    MeshCollider meshCollider = hit.collider as MeshCollider;
+
+                                    if (renderer != null && renderer.material != null && renderer.material.mainTexture != null && meshCollider != null)
+                                    {
+                                        Texture2D texture = renderer.material.mainTexture as Texture2D;
+
+                                        // Convert the hit point to texture coordinates
+                                        Vector2 pixelUV = hit.textureCoord;
+                                        pixelUV.x *= texture.width;
+                                        pixelUV.y *= texture.height;
+
+                                        // Ensure the texture is readable
+                                        if (texture.isReadable)
+                                        {
+                                            Color color = texture.GetPixel((int)pixelUV.x, (int)pixelUV.y);
+                                            Debug.Log("Color: " + color);
+                                            
+                                            foreach(TerrainType terrain in MapGenerator.Instance.regions)
+                                            {
+                                                if (color.r - 0.01 < terrain.color.r && color.r + 0.01 > terrain.color.r)
+                                                {
+                                                    Debug.Log("Hit: " + terrain.name);
+                                                    if (terrain.prefabs.Count != 0)
+                                                        GameObject.Instantiate(terrain.prefabs[0], hit.point, Quaternion.identity, meshObject.transform);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Debug.LogWarning("Texture is not readable.");
+                                        }
+                                    }
+                                }
+
+                                Debug.DrawRay(randomPosition, Vector3.down * 100, Color.red, 5f); // Draw the ray for visualization
+                            }
                         }
                         else if (!collisionLODMesh.hasRequestedMesh)
                         {

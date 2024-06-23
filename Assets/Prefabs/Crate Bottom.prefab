@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2253af1790a761549bf9675973859f86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5927702
+      value: -0.08398223
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2253af1790a761549bf9675973859f86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.325
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2253af1790a761549bf9675973859f86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7212253
+      value: 0.34948105
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2253af1790a761549bf9675973859f86, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2253af1790a761549bf9675973859f86, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f20ecf845fe60a04aa394f85a6abd859, type: 2}
     - target: {fileID: 919132149155446097, guid: 2253af1790a761549bf9675973859f86, type: 3}
       propertyPath: m_Name
       value: Crate Bottom
@@ -125,6 +129,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 30ccd54f152a97647a7a1116f42f1bbf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f20ecf845fe60a04aa394f85a6abd859, type: 2}
     - target: {fileID: 919132149155446097, guid: 30ccd54f152a97647a7a1116f42f1bbf, type: 3}
       propertyPath: m_Name
       value: Crate Lid
