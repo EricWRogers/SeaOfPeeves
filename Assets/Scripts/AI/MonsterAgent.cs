@@ -48,6 +48,7 @@ namespace DefaultNamespace
         public AgentCombatState combatStates;
 
         //  private List<GameObject> attackers; //all agents about to attack
+        public AudioSource swishAudio;
         private float attackCooldown = 0.0f;
         public GameObject playerGameObject;
         public float agentHealth;
@@ -87,6 +88,11 @@ namespace DefaultNamespace
             // Just to see if the monster is in a disabled state or not
             if (combatStates.stunned || combatStates.staggered || attackCooldown > 0.0f)
                 return false;
+
+            if(swishAudio != null)
+            {
+                swishAudio.Play();
+            }
 
             return true;
         }
