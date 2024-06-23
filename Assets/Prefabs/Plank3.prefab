@@ -56,13 +56,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bbda7e74a2601d646b5829210e21bd5c, type: 3}
+      propertyPath: m_TagString
+      value: Grabbable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bbda7e74a2601d646b5829210e21bd5c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8049383834537095707}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bbda7e74a2601d646b5829210e21bd5c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 635095701873788485}
@@ -75,18 +76,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bbda7e74a2601d646b5829210e21bd5c, type: 3}
   m_PrefabInstance: {fileID: 6854406122828398677}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8049383834537095707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6043505092378639620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f87a0ff6bb9db248acb6ff45ef8d595, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &635095701873788485
 BoxCollider:
   m_ObjectHideFlags: 0
