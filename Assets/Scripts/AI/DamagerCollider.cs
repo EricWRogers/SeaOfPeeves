@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using SuperPupSystems.Helper;
 using UnityEngine;
 
 public class DamagerCollider : MonoBehaviour
@@ -13,7 +14,6 @@ public class DamagerCollider : MonoBehaviour
       public void Start()
         {
             _collider = GetComponent<Collider>();
-            monsterAgent = transform.parent.gameObject.GetComponent<MonsterAgent>();
         }
 
         public void OnTriggerEnter(Collider collider)
@@ -23,10 +23,11 @@ public class DamagerCollider : MonoBehaviour
                 return;
             }
 
-            if (collider.gameObject.CompareTag(packTag) && collider.transform != transform.parent )
+            if (collider.gameObject.CompareTag(packTag) )
             {
                 _isColliding = true;
-               //todo: Get player health and apply damage from monster data
+               Debug.Log("HIT PLAYER");
+              collider.GetComponent<Health>().currentHealth -= monsterAgent.AgentData.damage;
             }
         }
         

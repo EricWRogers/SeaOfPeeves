@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a2e161a5-124f-4602-8f30-6a97afedbce3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SeaOfPeeves/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeaOfPeeves/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Merlock_OnShip (NPC).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Merlock_OnShip (NPC).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Merlock_Underwater (NPC).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Merlock_Underwater (NPC).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Combat_Test_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Combat_Test_Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AgentCombatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AgentCombatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/AgentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/AgentData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/DamagerCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/DamagerCollider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/MonsterAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/MonsterAgent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +107,7 @@
       <workItem from="1719017308667" duration="24000" />
       <workItem from="1719017348696" duration="21000" />
       <workItem from="1719066997302" duration="33439000" />
-      <workItem from="1719143112103" duration="11530000" />
+      <workItem from="1719143112103" duration="14312000" />
     </task>
     <servers />
   </component>

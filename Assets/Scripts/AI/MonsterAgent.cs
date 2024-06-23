@@ -110,6 +110,11 @@ namespace DefaultNamespace
             }
         }
 
+        public void OnHit()
+        {
+            monsterAnimator.SetTrigger("Hit");
+        }
+
         public void OnCancelAttack(GameObject requestor)
         {
             if (attackIndicator != null)
@@ -134,6 +139,15 @@ namespace DefaultNamespace
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
             transform.rotation =
                 Quaternion.Slerp(transform.rotation, targetRotation, AgentData.trackSpeed * Time.deltaTime);
+        }  
+        public void TrackTargetAttack()
+        {
+            Vector3 targetPoint = playerGameObject.transform.position;
+            targetPoint.y = transform.position.y;
+
+            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+            transform.rotation =
+                Quaternion.Slerp(transform.rotation, targetRotation, 2 * Time.deltaTime);
         }
 
         public void MoveToTarget(Vector3 targetPosition)
@@ -171,6 +185,13 @@ namespace DefaultNamespace
             StopCoroutine(SmoothToIdle());
         }
 
+        public void StartDeathAnimations()
+        {
+            monsterAnimator.SetTrigger("Die");
+            combatStates.stunned = true;
+            StartCoroutine(Death());
+        }
+
         private IEnumerator SmoothToIdle()
         {
             float y = monsterAnimator.GetFloat("MoveY");
@@ -192,6 +213,12 @@ namespace DefaultNamespace
             // Ensure final values are set to zero
             monsterAnimator.SetFloat("MoveY", 0);
             monsterAnimator.SetFloat("MoveX", 0);
+        }
+        
+        private IEnumerator Death()
+        {
+            yield return new WaitForSeconds(3);
+            Destroy(gameObject);
         }
     }
 }

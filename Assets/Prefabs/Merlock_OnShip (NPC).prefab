@@ -242,7 +242,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4882248344882690811}
-  - {fileID: 1711532839878602578}
   - {fileID: 3345570982390189724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,7 +302,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -366,7 +365,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7742443125538834035}
+        m_TargetAssemblyTypeName: DefaultNamespace.MonsterAgent, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   healed:
     m_PersistentCalls:
       m_Calls: []
@@ -375,7 +386,19 @@ MonoBehaviour:
       m_Calls: []
   outOfHealth:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7742443125538834035}
+        m_TargetAssemblyTypeName: DefaultNamespace.MonsterAgent, Assembly-CSharp
+        m_MethodName: StartDeathAnimations
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   maxHealth: 100
   currentHealth: 0
 --- !u!1 &8330957234957614674
@@ -492,15 +515,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1711532839878602578}
-  - component: {fileID: 5859068476762696432}
   - component: {fileID: 4306207665856322203}
+  - component: {fileID: 4757471102688117212}
   m_Layer: 0
   m_Name: Damage Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1711532839878602578
 Transform:
   m_ObjectHideFlags: 0
@@ -509,14 +532,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8625253432297850949}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.99}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.29151767, y: 0.011546905, z: 0.019203551, w: 0.956303}
+  m_LocalPosition: {x: -0.0000000014895775, y: -0.000000009191961, z: 0.00000000452283}
+  m_LocalScale: {x: 0.06065247, y: 0.060652476, z: 0.06065247}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2275364590815995588}
+  m_Father: {fileID: 9203537618946734020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5859068476762696432
+--- !u!114 &4306207665856322203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625253432297850949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3daa46e2cab4da24daae803f57f0f78c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  packTag: Player
+  monsterAgent: {fileID: 0}
+--- !u!65 &4757471102688117212
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -535,22 +572,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4306207665856322203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625253432297850949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3daa46e2cab4da24daae803f57f0f78c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  packTag: Player
-  monsterAgent: {fileID: 0}
+  m_Size: {x: 0.18227945, y: 0.43707117, z: 0.6598079}
+  m_Center: {x: -0.017689623, y: 0.18853511, z: 0.26990396}
 --- !u!1001 &3019490275174492535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -606,6 +629,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6223669965430857395, guid: de7cc2df40f973e40b1ef8c0ea1f11a9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1711532839878602578}
     - targetCorrespondingSourceObject: {fileID: -5839277684036858852, guid: de7cc2df40f973e40b1ef8c0ea1f11a9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9020769461508728253}
@@ -648,5 +674,10 @@ Animator:
 --- !u!4 &3345570982390189724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de7cc2df40f973e40b1ef8c0ea1f11a9, type: 3}
+  m_PrefabInstance: {fileID: 3019490275174492535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9203537618946734020 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6223669965430857395, guid: de7cc2df40f973e40b1ef8c0ea1f11a9, type: 3}
   m_PrefabInstance: {fileID: 3019490275174492535}
   m_PrefabAsset: {fileID: 0}

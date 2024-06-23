@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4beb0fd4cdf4615bf1d4677d4ac9aff, type: 3}
   m_Name: Merlock Data
   m_EditorClassIdentifier: 
+  merlockType: 0
   AgentHealth: 100
+  damage: 10
   movementSpeed: 1
   attackDistance: 2.5
   dangerDistance: 8
