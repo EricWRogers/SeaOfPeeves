@@ -8,6 +8,8 @@ public class Harpoon : MonoBehaviour
     public Transform reelPoint;
     public Transform tip;
 
+    public int damage = 50;
+
     public float speed;
     public float rewindSpeed;
     public bool ret = false;
@@ -47,43 +49,21 @@ public class Harpoon : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log("Hit");
-        //hitSomething = true;
-        //rb.velocity = Vector3.zero;
-        //rb.angularVelocity = Vector3.zero;
-        //collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        //collision.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        //foreach (Collider c in GetComponents<Collider>())
-        //{
-        //    c.enabled = false;
-        //}
-        //if (collision.gameObject.tag == "Grabbable")
-        //{
-        //    rb.velocity = Vector3.zero;
-        //    rb.angularVelocity = Vector3.zero;
-
-        //    Destroy(collision.gameObject.GetComponent<Rigidbody>());
-        //    collision.gameObject.transform.parent = tip;
-        //    hitSomething = true;
-        //}
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
-        hitSomething = true;
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        other.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        foreach (Collider c in GetComponents<Collider>())
+        if (other.gameObject.tag == "Grabbable" || other.isTrigger == false)
         {
-            c.enabled = false;
-        }
-        if (other.gameObject.tag == "Grabbable")
-        {
+            Debug.Log("Hit");
+            hitSomething = true;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            other.gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            foreach (Collider c in GetComponents<Collider>())
+            {
+                c.enabled = false;
+            }
+        
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
@@ -91,5 +71,7 @@ public class Harpoon : MonoBehaviour
             other.gameObject.transform.parent = tip;
             hitSomething = true;
         }
+
+        other.gameObject.GetComponent<SuperPupSystems.Helper.Health>()?.Damage(damage);
     }
 }
