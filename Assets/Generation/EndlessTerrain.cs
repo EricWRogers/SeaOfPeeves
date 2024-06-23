@@ -217,13 +217,10 @@ public class EndlessTerrain : MonoBehaviour
                                                 {
                                                     if (terrain.prefabs.Count != 0)
                                                     {
-                                                        //Debug.Log("Hit: " + terrain.name + " Spawn: " + terrain.prefabs[0]);
-
                                                         int index = Random.Range(0, terrain.prefabs.Count - 1);
 
                                                         if (terrain.prefabs[index])
                                                         {
-                                                            Debug.Log("Prefab Index: " + index);
                                                             GameObject.Instantiate(terrain.prefabs[index], hit.point, Quaternion.identity, meshObject.transform);
                                                         }
                                                         

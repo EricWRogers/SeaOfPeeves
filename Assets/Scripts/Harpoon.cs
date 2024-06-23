@@ -25,15 +25,20 @@ public class Harpoon : MonoBehaviour
     {
         if (!ret && !hitSomething)
         {
-            rb.AddForce(-transform.forward * speed);
+            rb.velocity = -transform.forward * speed;
         }
         else
         {
             rb.angularDrag = 50;
-            Vector3 temp = returnPoint.position - reelPoint.position;
-            rb.velocity = temp.normalized * rewindSpeed;
+            Vector3 move = (returnPoint.position - reelPoint.position) * rewindSpeed;
+
+            if ((move).magnitude > (move.normalized).magnitude)
+                rb.velocity = move;
+            else
+                rb.velocity = move.normalized;
+
             transform.LookAt(returnPoint);
-            if(Vector3.Distance(returnPoint.position, reelPoint.position) < .1f)
+            if(Vector3.Distance(returnPoint.position, reelPoint.position) < Mathf.Max((move * Time.deltaTime).magnitude, (move.normalized * Time.deltaTime).magnitude))
             {
                 returnPoint.parent.GetComponent<HarpoonGun>().fired = false;
                 returnPoint.parent.GetComponent<HarpoonGun>().lineRenderer.enabled = false;
