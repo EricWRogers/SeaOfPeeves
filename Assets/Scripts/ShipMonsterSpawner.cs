@@ -20,7 +20,7 @@
         public float lastSpawnTime = 0;
         public float spawnInterval = 2f;
         public float spawnRadius = 3f;
-
+        public float maxSpawnAmount;
         public GameObject playerGameObject;
         private bool spawning;
         public SplineContainer spawnSpline;
@@ -44,13 +44,21 @@
                     StartCoroutine(SpawnMonsters());
                 }
             }
+
+            for (int i = 0; i < spawnedMonsters.Count; i++)
+            {
+                if (spawnedMonsters[i].gameObject == null)
+                {
+                    spawnedMonsters.Remove(spawnedMonsters[i]);
+                }
+            }
             
         }
 
         private IEnumerator SpawnMonsters()
         {
             int counter = 0;
-            while (counter < spawnAmount)
+            while (counter < spawnAmount && spawnedMonsters.Count < maxSpawnAmount)
             {
                 GameObject monster = Instantiate(monsterPrefab, transform.position, quaternion.identity);
                 monster.GetComponent<MonsterAgent>().playerGameObject = playerGameObject;

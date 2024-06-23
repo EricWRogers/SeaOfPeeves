@@ -15,7 +15,7 @@ MonoBehaviour:
   merlockType: 0
   AgentHealth: 100
   damage: 10
-  movementSpeed: 1.5
+  movementSpeed: 2.5
   attackDistance: 2.5
   dangerDistance: 8
   trackSpeed: 5
