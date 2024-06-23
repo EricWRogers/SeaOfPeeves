@@ -6,6 +6,9 @@ using UnityEngine;
 public static class Noise
 {
     public enum NormalizeMode {Local, Global}
+
+    public static float minNoise = float.MinValue;
+    public static float maxNoise = float.MaxValue;
     public static float[,] GenerateNoiseMap(int _width, int _height, int seed, float _scale, int _octaves, float _persistance, float _lacunarity, Vector2 offset, NormalizeMode _normalizeMode)
     {
         float [,] noiseMap = new float[_width,_height];
@@ -80,11 +83,23 @@ public static class Noise
                 }
                 else if (NormalizeMode.Global == _normalizeMode)
                 {
-                    float normalizedHeight = (noiseMap[x, y] + 1) / (2f * maxPossibleHeight / 1.75f);
+                    float normalizedHeight = (noiseMap[x, y] + 1) / (2f * maxPossibleHeight / 1.25f);
                     noiseMap[x,y] = Mathf.Clamp(normalizedHeight, 0, int.MaxValue);
+                    //noiseMap[x, y] = Mathf.InverseLerp(-4f, 4f, noiseMap[x,y]);
                 }
             }
         }
+
+        if (maxLocalNoiseHeight > maxNoise)
+        {
+            maxNoise = maxLocalNoiseHeight;
+        }
+        else if (minLocalNoiseHeight < minNoise)
+        {
+            minNoise = minLocalNoiseHeight;
+        }
+
+        Debug.Log("maxNoise: " + maxNoise + " minNoise: " + minNoise);
 
         return noiseMap;
     }
