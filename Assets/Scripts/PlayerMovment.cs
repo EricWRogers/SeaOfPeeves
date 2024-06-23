@@ -12,6 +12,7 @@ public class PlayerMovment : MonoBehaviour
     public float lookSensitivity = 1f;
     public float clampRange = 45f;
     public GameObject cam;
+    public GameObject jumpPoint;
 
     private Vector2 moveDirection = Vector2.zero;
     private Vector2 lookDirection = Vector2.zero;
@@ -96,7 +97,7 @@ public class PlayerMovment : MonoBehaviour
         {
             Debug.Log("Jump");
             hitSomething = Physics.Raycast(Vector3.down, transform.position, out _, interactRange);
-            if(!hitSomething)
+            if(hitSomething)
             { 
                 rb.AddForce(Vector3.up * jumpForce);
             }

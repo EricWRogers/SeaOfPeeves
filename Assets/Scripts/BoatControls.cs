@@ -16,7 +16,10 @@ public class BoatControls : MonoBehaviour
     public float maxSpeed = 25f;
     public float anchorDrag = 10f;
     public float straightenTime = 1f;
+    public float minHieght = 18f;
     private float baseDrag;
+
+
 
     private Rigidbody rb;
     //private Vector3 direction = Vector3.forward;
@@ -43,6 +46,11 @@ public class BoatControls : MonoBehaviour
             {
                 straight();
             }
+        }
+        if(rb.transform.position.y <= minHieght)
+        {
+            rb.gameObject.transform.position = new Vector3 (rb.gameObject.transform.position.x, minHieght, rb.gameObject.transform.position.z);
+            rb.velocity = new Vector3 (rb.velocity.x, 0, rb.velocity.z);
         }
         speed.text = "Speed: " + (int)(rb.velocity.magnitude*10);
     }
