@@ -99,7 +99,7 @@ public static class Noise
             minNoise = minLocalNoiseHeight;
         }
 
-        Debug.Log("maxNoise: " + maxNoise + " minNoise: " + minNoise);
+        //Debug.Log("maxNoise: " + maxNoise + " minNoise: " + minNoise);
 
         return noiseMap;
     }
