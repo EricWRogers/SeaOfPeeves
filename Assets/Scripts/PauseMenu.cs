@@ -47,11 +47,5 @@ public class PauseMenu : MonoBehaviour
         pauseMenuGobj.SetActive(false);
     }
 
-    public void Quit()
-    {
-#if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-#endif
-        Application.Quit();
-    }
+
 }
