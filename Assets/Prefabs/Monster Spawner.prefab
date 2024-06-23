@@ -101,7 +101,7 @@ MonoBehaviour:
   spawnedMonsters: []
   spawnAmount: 5
   spawnInterval: 2
-  despawnDelay: 120
+  despawnDelay: 20
   spawnRadius: 3
 --- !u!136 &4030802232834868397
 CapsuleCollider:
