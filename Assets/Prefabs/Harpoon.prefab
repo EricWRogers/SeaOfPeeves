@@ -52,8 +52,8 @@ MonoBehaviour:
   returnPoint: {fileID: 0}
   reelPoint: {fileID: 3693672045122762784}
   tip: {fileID: 1856018898756988268}
-  speed: 1
-  rewindSpeed: 8
+  speed: 20
+  rewindSpeed: 15
   ret: 0
 --- !u!54 &5375905494889123141
 Rigidbody:

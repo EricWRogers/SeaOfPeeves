@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6760961613839105241}
-  - component: {fileID: 7427556238205954495}
   - component: {fileID: 8360537338274200196}
   m_Layer: 0
   m_Name: Water
@@ -33,27 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5075611394048078246}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7427556238205954495
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645679866662176075}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 100, y: 18, z: 100}
-  m_Center: {x: 0, y: 9, z: 0}
 --- !u!114 &8360537338274200196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +47,7 @@ MonoBehaviour:
   underwaterColor: {r: 0.3443396, g: 0.72005516, b: 1, a: 0.6}
   volume: {fileID: 3073260103667443369}
   volumeProfile: {fileID: 11400000, guid: e8bcb8e5457c44f4487c549361c4c2d6, type: 2}
+  height: 18
 --- !u!1 &4254294486294057412
 GameObject:
   m_ObjectHideFlags: 0
