@@ -365,26 +365,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!1 &289292295 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7828737808245003722, guid: a43986aa4c91f1b4dbe147ca3b91a5dc, type: 3}
-  m_PrefabInstance: {fileID: 4374085496464471956}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &289292296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289292295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e150f42e4dc7d14459e593b8f07c405c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterSurfacePrefab: {fileID: 4507554638825087717, guid: 56a42f3b1dd44944aa6b3aa1cb736179, type: 3}
-  gridSize: 100
-  yLevel: 18
 --- !u!1 &322488133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,10 +989,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7828737808245003722, guid: a43986aa4c91f1b4dbe147ca3b91a5dc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 289292296}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a43986aa4c91f1b4dbe147ca3b91a5dc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
