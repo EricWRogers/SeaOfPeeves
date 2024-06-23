@@ -95,7 +95,11 @@ public class PlayerMovment : MonoBehaviour
         if (playerControls.Player.Jump.triggered)
         {
             Debug.Log("Jump");
-            rb.AddForce(Vector3.up * jumpForce);
+            hitSomething = Physics.Raycast(Vector3.down, transform.position, out _, interactRange);
+            if(!hitSomething)
+            { 
+                rb.AddForce(Vector3.up * jumpForce);
+            }
         }
     }
 
