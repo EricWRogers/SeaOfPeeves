@@ -180,12 +180,11 @@ public class EndlessTerrain : MonoBehaviour
                     {
                         if (collisionLODMesh.hasMesh && meshCollider.sharedMesh == null)
                         {
-                            Debug.Log("Tile: " + position);
                             meshCollider.sharedMesh = collisionLODMesh.mesh;
 
                             float heightScale = MapGenerator.Instance.meshmapHeightMultiplier;
 
-                            for (int i = 0; i < 100; i++)
+                            for (int i = 0; i < 200; i++)
                             {
                                 Vector3 randomPosition = GetRandomPositionInBounds(bounds);
                                 Ray ray = new Ray(randomPosition, Vector3.down);
@@ -209,6 +208,8 @@ public class EndlessTerrain : MonoBehaviour
                                         if (texture.isReadable)
                                         {
                                             Color color = texture.GetPixel((int)pixelUV.x, (int)pixelUV.y);
+
+                                            i--;
                                             
                                             foreach(TerrainType terrain in MapGenerator.Instance.regions)
                                             {
@@ -222,6 +223,9 @@ public class EndlessTerrain : MonoBehaviour
 
                                                         if (terrain.prefabs[index])
                                                             GameObject.Instantiate(terrain.prefabs[index], hit.point, Quaternion.identity, meshObject.transform);
+                                                        
+                                                        i++;
+                                                        break;
                                                     }
                                                 }
                                             }
@@ -230,6 +234,8 @@ public class EndlessTerrain : MonoBehaviour
                                         {
                                             Debug.LogWarning("Texture is not readable.");
                                         }
+
+                                        
                                     }
                                 }
 
