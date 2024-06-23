@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -13,6 +14,8 @@ public class UnderwaterEffect : MonoBehaviour
 
     private Color normalColor;
 
+    public float height = 18f;
+
     private bool isUnderwater = false;
 
     private void Start()
@@ -20,37 +23,21 @@ public class UnderwaterEffect : MonoBehaviour
         normalColor = RenderSettings.fogColor;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        if (Camera.main.transform.position.y < height)
         {
             RenderSettings.fogColor = underwaterColor;
             RenderSettings.fogDensity = 0.1f;
 
             volume.profile = volumeProfile;
-
-            isUnderwater = true;
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        else
         {
             RenderSettings.fogColor = normalColor;
             RenderSettings.fogDensity = 0.02f;
 
             volume.profile = null;
-
-            isUnderwater = false;
-        }
-    }
-
-    private void Update()
-    {
-        if (isUnderwater)
-        {
-            // Other underwater effects if need be?
         }
     }
 }

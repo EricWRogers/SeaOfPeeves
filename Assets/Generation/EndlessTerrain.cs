@@ -135,9 +135,9 @@ public class EndlessTerrain : MonoBehaviour
 
         Vector3 GetRandomPositionInBounds(Bounds bounds)
         {
-            float x = position.x + Random.Range(bounds.min.x, bounds.max.x);
+            float x = Random.Range(bounds.min.x, bounds.max.x);
             float y = 50f; // Starting from the top of the bounds
-            float z = position.y + Random.Range(bounds.min.x, bounds.max.x);
+            float z = Random.Range(bounds.min.y, bounds.max.y);
 
             return new Vector3(x, y, z);
         }
@@ -184,7 +184,7 @@ public class EndlessTerrain : MonoBehaviour
 
                             float heightScale = MapGenerator.Instance.meshmapHeightMultiplier;
 
-                            for (int i = 0; i < 100; i++)
+                            for (int i = 0; i < 200; i++)
                             {
                                 Vector3 randomPosition = GetRandomPositionInBounds(bounds);
                                 Ray ray = new Ray(randomPosition, Vector3.down);
@@ -208,15 +208,25 @@ public class EndlessTerrain : MonoBehaviour
                                         if (texture.isReadable)
                                         {
                                             Color color = texture.GetPixel((int)pixelUV.x, (int)pixelUV.y);
-                                            Debug.Log("Color: " + color);
+
+                                            i--;
                                             
                                             foreach(TerrainType terrain in MapGenerator.Instance.regions)
                                             {
-                                                if (color.r - 0.01 < terrain.color.r && color.r + 0.01 > terrain.color.r)
+                                                if (color.r - 0.02 < terrain.color.r && color.r + 0.02 > terrain.color.r)
                                                 {
-                                                    Debug.Log("Hit: " + terrain.name);
                                                     if (terrain.prefabs.Count != 0)
-                                                        GameObject.Instantiate(terrain.prefabs[0], hit.point, Quaternion.identity, meshObject.transform);
+                                                    {
+                                                        Debug.Log("Hit: " + terrain.name + " Spawn: " + terrain.prefabs[0]);
+
+                                                        int index = Random.Range(0, terrain.prefabs.Count - 1);
+
+                                                        if (terrain.prefabs[index])
+                                                            GameObject.Instantiate(terrain.prefabs[index], hit.point, Quaternion.identity, meshObject.transform);
+                                                        
+                                                        i++;
+                                                        break;
+                                                    }
                                                 }
                                             }
                                         }
@@ -224,6 +234,8 @@ public class EndlessTerrain : MonoBehaviour
                                         {
                                             Debug.LogWarning("Texture is not readable.");
                                         }
+
+                                        
                                     }
                                 }
 
@@ -232,6 +244,7 @@ public class EndlessTerrain : MonoBehaviour
                         }
                         else if (!collisionLODMesh.hasRequestedMesh)
                         {
+                            Debug.Log("Tile Request: " + position);
                             collisionLODMesh.Requestmesh(mapData);
                         }
                     }
