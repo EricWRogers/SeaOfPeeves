@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2e161a5-124f-4602-8f30-6a97afedbce3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SeaOfPeeves/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SeaOfPeeves/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boat Holder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boat Holder.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Combat_Test_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Combat_Test_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Combat_Test_Scene/NavMesh-Boat Holder 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Combat_Test_Scene/NavMesh-Boat Holder 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/MonsterAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/MonsterAgent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShipMonsterSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ShipMonsterSpawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +103,7 @@
       <workItem from="1719017308667" duration="24000" />
       <workItem from="1719017348696" duration="21000" />
       <workItem from="1719066997302" duration="33439000" />
-      <workItem from="1719143112103" duration="27666000" />
+      <workItem from="1719143112103" duration="28326000" />
     </task>
     <servers />
   </component>

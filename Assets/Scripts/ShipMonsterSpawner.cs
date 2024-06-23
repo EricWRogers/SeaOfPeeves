@@ -11,7 +11,7 @@
     {
         public GameObject monsterPrefab;
         public List<GameObject> spawnedMonsters;
-
+        public GameObject parent;
         public float spawnAmount;
         private string playerTag = "Player";
         public float RandomShipSpawnMin;
@@ -61,6 +61,7 @@
             while (counter < spawnAmount && spawnedMonsters.Count < maxSpawnAmount)
             {
                 GameObject monster = Instantiate(monsterPrefab, transform.position, transform.rotation);
+                monster.transform.SetParent(parent.transform);
                 monster.GetComponent<MonsterAgent>().playerGameObject = playerGameObject;
                 monster.GetComponent<MonsterAgent>().playerAICombatState = playerGameObject.GetComponent<PlayerAICombatState>();
                 monster.GetComponent<MonsterAgent>().splineAnimation.Container = spawnSpline;
