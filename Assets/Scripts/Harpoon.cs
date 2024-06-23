@@ -30,15 +30,15 @@ public class Harpoon : MonoBehaviour
         else
         {
             rb.angularDrag = 50;
-            Vector3 move = (returnPoint.position - reelPoint.position) * rewindSpeed;
+            Vector3 move = (returnPoint.position - reelPoint.position);
 
             if ((move).magnitude > (move.normalized).magnitude)
-                rb.velocity = move;
+                rb.velocity = move * rewindSpeed;
             else
-                rb.velocity = move.normalized;
+                rb.velocity = move.normalized * rewindSpeed;
 
             transform.LookAt(returnPoint);
-            if(Vector3.Distance(returnPoint.position, reelPoint.position) < Mathf.Max((move * Time.deltaTime).magnitude, (move.normalized * Time.deltaTime).magnitude))
+            if(Vector3.Distance(returnPoint.position, reelPoint.position) < Mathf.Max((move * rewindSpeed * Time.deltaTime).magnitude, (move * rewindSpeed * Time.deltaTime).normalized.magnitude))
             {
                 returnPoint.parent.GetComponent<HarpoonGun>().fired = false;
                 returnPoint.parent.GetComponent<HarpoonGun>().lineRenderer.enabled = false;

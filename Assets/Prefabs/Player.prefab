@@ -358,6 +358,7 @@ MonoBehaviour:
   interactRange: 5
   lookSensitivity: 1
   clampRange: 45
+  jumpTime: 1
   cam: {fileID: 4317588821271663300}
 --- !u!114 &-1226610909345420900
 MonoBehaviour:
@@ -550,6 +551,8 @@ MonoBehaviour:
   harpoon: {fileID: 6120541199534433222, guid: a187bd1ee88e2344cbcc79cc7d8104ac, type: 3}
   firePoint: {fileID: 2786648479516081044}
   fired: 0
+  numPoints: 20
+  lineRenderer: {fileID: 0}
 --- !u!120 &2225811385105656525
 LineRenderer:
   serializedVersion: 2
@@ -571,7 +574,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2d591e7fdf45d0d49b07d0dd6fdade3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -603,7 +606,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.08416176
         inSlope: 0
         outSlope: 0
         tangentMode: 0
