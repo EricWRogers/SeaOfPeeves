@@ -158,7 +158,6 @@ public class MapGenerator : MonoBehaviour
         if (useFalloff)
             fallofMap = FalloffGenerator.GenerateFalloffMap(mapChuckSize+2);
     }
-
     struct MapThreadInfo<T> {
         public readonly Action<T> callback;
         public readonly T parameter;
