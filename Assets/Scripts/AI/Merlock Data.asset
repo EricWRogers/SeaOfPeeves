@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Merlock Data
   m_EditorClassIdentifier: 
   AgentHealth: 100
-  movementSpeed: 1.4
-  attackDistance: 4
-  dangerDistance: 5
-  trackSpeed: 0.1
-  attackRate: 10
+  movementSpeed: 1.5
+  attackDistance: 2
+  dangerDistance: 10
+  trackSpeed: 2
+  attackRate: 5
   attackRateFluctuation: 0
   subAttackRate: 10
   subAttackRateFluctuation: 0
-  seperation: 2
+  seperation: 2.5
   strafeRate: 0
   AgentBaseDamage: 0
   AgentBaseDefense: 0
@@ -31,4 +31,4 @@ MonoBehaviour:
   AgentLungeChance: 0
   CanDodge: 0
   AvoidOthers: 1
-  canLockOn: 0
+  canLockOn: 1

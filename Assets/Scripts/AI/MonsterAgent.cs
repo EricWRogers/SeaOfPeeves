@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
@@ -40,18 +41,24 @@ namespace DefaultNamespace
     {
         public AgentData AgentData;
         public AgentCombatState combatStates;
-        private List<GameObject> attackers; //all agents about to attack
+      //  private List<GameObject> attackers; //all agents about to attack
         private float attackCooldown = 0.0f;
         public GameObject playerGameObject;
         public float agentHealth;
         private int simultaneousAttackers = 1;
         public AgentCombatManager agentCombatManager;
+        private PlayerAICombatState playerAICombatState;
         public GameObject attackIndicator;
+        public GameObject damageCollider;
+
+        private float randomizedSpeed;
         private void Start()
         {
-            attackers = new List<GameObject>();
+            playerAICombatState = playerGameObject.GetComponent<PlayerAICombatState>();
             agentCombatManager = new AgentCombatManager(this);
             agentHealth = AgentData.AgentHealth;
+
+            randomizedSpeed = AgentData.movementSpeed + Random.Range(-.2f, .5f);
         }
 
         private void Update()
@@ -59,19 +66,7 @@ namespace DefaultNamespace
             agentCombatManager.UpdateAgentCombat();
         }
 
-        public void LookAtTarget(GameObject target)
-        {
-            transform.LookAt(target.transform);
-        }
-
-        public void TrackTarget(GameObject target)
-        {
-	        var targetPoint = target.transform.position;
-	        targetPoint.y = transform.position.y;
-            
-	        var targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
-	        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, AgentData.trackSpeed);
-        }
+     
         
         public bool OnAttack()
         {
@@ -84,12 +79,12 @@ namespace DefaultNamespace
         
         public void OnRequestAttack(GameObject requestor)
         {
-            attackers.RemoveAll(item => item == null);
+           // playerAICombatState.attackers.RemoveAll(item => item == null);
 
-            if (attackers.Count < simultaneousAttackers)
+            if ( playerAICombatState.attackers.Count < playerAICombatState.simultaneousAttackers)
             {
-                if (!attackers.Contains(requestor))
-                    attackers.Add(requestor);
+                if (! playerAICombatState.attackers.Contains(requestor))
+                    playerAICombatState.attackers.Add(requestor);
                 //Debug.Log("Requestor " + requestor);
                 
                 agentCombatManager.OnAllowAttack(requestor);
@@ -103,17 +98,35 @@ namespace DefaultNamespace
         
         public void OnCancelAttack(GameObject requestor)
         {
+            if (attackIndicator != null)
+            {
+               attackIndicator.SetActive(false);
+            }
+            if (damageCollider != null)
+            {
+                damageCollider.SetActive(false);
+            }
             // Debug.Log("Requestor " + requestor);
-            attackers.Remove(requestor);
+            playerAICombatState.attackers.Remove(requestor);
         }
-        
+   
+        public void TrackTarget(GameObject target)
+        {
+            Vector3 targetPoint = target.transform.position;
+            targetPoint.y = transform.position.y; 
+
+            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, AgentData.trackSpeed * Time.deltaTime);
+        }
         public void MoveToTarget( Vector3 targetPosition )
         {
-            // Check if close enough to target
-            if (Vector3.Distance(transform.position, targetPosition) > 0.001f)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, AgentData.movementSpeed * Time.deltaTime);
-            }
+            Vector3 direction = (targetPosition - transform.position).normalized;
+            Vector3 moveVector = direction * (randomizedSpeed * Time.deltaTime);
+        
+            // Ensure only horizontal movement by maintaining the current y position
+            moveVector.y = 0;
+
+            transform.position += moveVector;
         }
     }
 }

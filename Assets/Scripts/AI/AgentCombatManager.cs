@@ -49,14 +49,14 @@ public class AgentCombatManager
     public MonsterAgent ThisAgent { get; set; }
 
  
- private System.Random random = new System.Random();
+	private System.Random random = new System.Random();
     float enemyMeleeDistance;
     public float EnemySqrMeleeRange => enemyMeleeDistance * enemyMeleeDistance;
     private float attackCooldown => Mathf.Max(actualAttackRate - (Time.fixedTime - lastAttackTime), 0f);
 
     private float subAttackCooldown => Mathf.Max(actualSubAttackRate - (Time.fixedTime - lastSubAttackTime), 0f);
 
-
+    private float placeHolderAnimationStart;
     #region Combat Functions
 
     //Combat manager constructor
@@ -197,6 +197,24 @@ public class AgentCombatManager
 			OnAttackComplete();
 		}
 
+		//Place holder 
+		if (ThisAgent.combatStates.attacking)
+		{
+			Debug.Log($"Place holder time since animation start:  {Time.fixedTime - placeHolderAnimationStart}");
+			if (Time.fixedTime - placeHolderAnimationStart > .5)
+			{
+				if (ThisAgent.damageCollider != null)
+				{
+					ThisAgent.damageCollider.SetActive(true);
+				}
+			}
+			
+			if (Time.fixedTime - placeHolderAnimationStart > 1.5)
+			{
+				ThisAgent.combatStates.attacking = false;
+			}
+		}
+
 		// keep looking at the target even if it's disabled
 		if (ThisAgent.combatStates.stunned)
 		{
@@ -307,21 +325,18 @@ public class AgentCombatManager
 		{
 			if (sqrDistance <= sqrDangerDistance)
 			{
-				ThisAgent.LookAtTarget(targetObject);
-
-				if (ThisAgent.combatStates.strafing || ThisAgent.combatStates.avoiding )
-				{
-					ThisAgent.TrackTarget(targetObject);
-				}
+				//ThisAgent.LookAtTarget(targetObject);
+				ThisAgent.TrackTarget(targetObject);
+				
 			}
 			else
 			{
 			
-				if (ThisAgent.combatStates.strafing || ThisAgent.combatStates.avoiding)
-				{
+				//if (ThisAgent.combatStates.strafing || ThisAgent.combatStates.avoiding )
+				//{
 					ThisAgent.TrackTarget(targetObject);
 					
-				}
+				//}
 			}
 		}
 		
@@ -427,13 +442,15 @@ public class AgentCombatManager
 
 			if (success)
 			{
-				//ThisAgent.combatStates.attacking = true;
+				ThisAgent.combatStates.attacking = true;
+				
 				Debug.Log("On Success Attack");
 				if (ThisAgent.attackIndicator != null)
 				{
 					ThisAgent.attackIndicator.SetActive(true);
 				}
 				
+				placeHolderAnimationStart = Time.fixedTime;
 				lastAttackTime = Time.fixedTime;
 				actualAttackRate = attackRate + (Random.value - 0.5f) * attackRateFluctuation;
 			    //Debug.Log("Attack Flux" + actualAttackRate);
@@ -563,12 +580,15 @@ public class AgentCombatManager
 	{
 		// disengage when completing an attack to give other enemies a chance
 		// Todo: this currently only happens if not in range of my prey need to set it for when attack chain or animation is done 
-		
+		Debug.Log("Attack Done ");
 		engagePrey = false;
-		//ThisAgent.combatStates.attacking = false;
 		if (ThisAgent.attackIndicator != null)
 		{
 			ThisAgent.attackIndicator.SetActive(false);
+		}
+		if (ThisAgent.damageCollider != null)
+		{
+			ThisAgent.damageCollider.SetActive(false);
 		}
 		
 		if (targetObject != null)
